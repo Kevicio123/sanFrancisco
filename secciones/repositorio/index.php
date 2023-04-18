@@ -1,44 +1,6 @@
 
 <?php 
 include ("../../db.php");
-
-// Instrucción de borrado
-
-if(isset($_GET['txtID'])){
-    $txtID=(isset($_GET['txtID']))?$_GET['txtID']:"";
-
-    // Buscar el archivo relacionado con el paciente
-    $sentencia=$conexion->prepare("SELECT hisoriaClinic FROM `paciente`
-    WHERE idPaciente=:idPaciente");
-    $sentencia->bindParam(":idPaciente",$txtID);
-    $sentencia->execute();
-    $encontrar_pdf=$sentencia->fetch(PDO::FETCH_LAZY);
-
-    // Borrar el archivo
-    if(isset($encontrar_pdf["hisoriaClinic"]) && $encontrar_pdf["hisoriaClinic"]!='' ){
-        if(file_exists("./".$encontrar_pdf["hisoriaClinic"])){
-            unlink("./".$encontrar_pdf["hisoriaClinic"] );         
-        }
-    }
-
-    $sentencia=$conexion->prepare("DELETE FROM `paciente` WHERE idPaciente=:idPaciente");
-    $sentencia->bindParam(":idPaciente",$txtID);
-    $sentencia->execute();
-    header("Location:index.php");
-
-}
-
-// Instrucción de mostrado de Tabla
-
-    $sentencia=$conexion->prepare("SELECT *,
-    (SELECT correo FROM users 
-    WHERE users.idUser=paciente.idUser limit 1) as usuario
-    FROM `paciente`");
-    $sentencia->execute();
-    $lista_pacientes=$sentencia->fetchAll(PDO::FETCH_ASSOC);
-
-
-
 ?>
 
 <?php 
@@ -65,6 +27,72 @@ foreach($pacientes as $paciente ){
         include("../../templates/Doctor/header.php");
     }
 ?>
+
+<?php
+
+// Instrucción de borrado
+
+if(isset($_GET['txtID'])){
+    $txtID=(isset($_GET['txtID']))?$_GET['txtID']:"";
+
+    // Buscar el archivo relacionado con el paciente
+    $sentencia=$conexion->prepare("SELECT odontograma,moldeDental,intraoral,rostro FROM `repositorio`
+    WHERE idPaciente=:idPaciente");
+    $sentencia->bindParam(":idPaciente",$txtID);
+    $sentencia->execute();
+    $encontrar_pdf=$sentencia->fetch(PDO::FETCH_LAZY);
+
+    // Borrar el archivo 1
+    if(isset($encontrar_pdf["odontograma"]) && $encontrar_pdf["odontograma"]!='' ){
+        if(file_exists("../documentos/".$encontrar_pdf["odontograma"])){
+            unlink("../documentos/".$encontrar_pdf["odontograma"] );         
+        }
+    }
+
+    // Borrar el archivo 2
+    if(isset($encontrar_pdf["moldeDental"]) && $encontrar_pdf["moldeDental"]!='' ){
+        if(file_exists("../documentos/".$encontrar_pdf["moldeDental"])){
+            unlink("../documentos/".$encontrar_pdf["moldeDental"] );         
+        }
+    }
+
+    // Borrar el archivo 3
+    if(isset($encontrar_pdf["intraoral"]) && $encontrar_pdf["intraoral"]!='' ){
+        if(file_exists("../documentos/".$encontrar_pdf["intraoral"])){
+            unlink("../documentos/".$encontrar_pdf["intraoral"] );         
+        }
+    }
+    // Borrar el archivo 4
+    if(isset($encontrar_pdf["rostro"]) && $encontrar_pdf["rostro"]!='' ){
+        if(file_exists("../documentos/".$encontrar_pdf["rostro"])){
+            unlink("../documentos/".$encontrar_pdf["rostro"] );         
+        }
+    }
+
+    $sentencia=$conexion->prepare("DELETE FROM `repositorio` WHERE idPaciente=:idPaciente");
+    $sentencia->bindParam(":idPaciente",$txtID);
+    $sentencia->execute();
+    if($rol==1){ 
+    header("Location:index.php");
+    }else{
+    header("Location:index2.php");
+    }
+
+}
+
+// Instrucción de mostrado de Tabla
+
+    $sentencia=$conexion->prepare("SELECT *,
+    (SELECT correo FROM users 
+    WHERE users.idUser=paciente.idUser limit 1) as usuario
+    FROM `paciente`");
+    $sentencia->execute();
+    $lista_pacientes=$sentencia->fetchAll(PDO::FETCH_ASSOC);
+
+
+
+?>
+
 
 
 
@@ -107,6 +135,10 @@ foreach($pacientes as $paciente ){
                             |
                          <a name="" id="" class="btn btn-primary" 
                         href="create.php?txtID=<?php echo $paciente['idPaciente']; ?>" role="button">Subir Documentos</a>
+                            |
+
+                            <a name="" id="" class="btn btn-danger" 
+                        href="javascript:borrarRepo(<?php echo $paciente['idPaciente']; ?>);" role="button">Eliminar</a>
                         
                         
                         

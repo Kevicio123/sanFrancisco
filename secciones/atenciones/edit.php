@@ -1,81 +1,5 @@
 <?php 
 include ("../../db.php");
-
-// Instrucción de recepcion de ID e informacion
-
-if(isset($_GET['txtID'])){
-    $txtID=(isset($_GET['txtID']))?$_GET['txtID']:"";
-
-    $sentencia=$conexion->prepare("SELECT * FROM `atencion` 
-    WHERE idAtencion=:idAtencion");
-    $sentencia->bindParam(":idAtencion",$txtID);
-    $sentencia->execute();
-    $registro=$sentencia->fetch(PDO::FETCH_LAZY);
-
-    $fechAten=$registro["fechAten"];
-    $linkAten=$registro["linkAten"];
-    $Comentarios=$registro["Comentarios"];
-    $estado=$registro["estado"];
-    $asistencia=$registro["asistencia"];
-    $modalidad=$registro["modalidad"];
-    $idDoctor=$registro["idDoctor"];
-    $idPaciente=$registro["idPaciente"];
-}
-
-// Intrucción de recolección de datos
-
-if($_POST){
-    // Recolectamos los datos
-    $txtID=(isset($_POST['txtID']))?$_POST['txtID']:"";
-    $fechAten=(isset($_POST["fechAten"])?$_POST["fechAten"]:"");
-    $linkAten=(isset($_POST["linkAten"])?$_POST["linkAten"]:"");
-    $Comentarios=(isset($_POST["Comentarios"])?$_POST["Comentarios"]:"");
-    $estado=(isset($_POST["estado"])?$_POST["estado"]:"");
-    $asistencia=(isset($_POST["asistencia"])?$_POST["asistencia"]:"");
-    $modalidad=(isset($_POST["modalidad"])?$_POST["modalidad"]:"");
-    $idDoctor=(isset($_POST["idDoctor"])?$_POST["idDoctor"]:"");
-    $idPaciente=(isset($_POST["idPaciente"])?$_POST["idPaciente"]:"");
-
-
-    // Actualizamos los datos de la BD
-    $sentencia=$conexion->prepare
-  ("UPDATE atencion SET
-  fechAten=:fechAten,
-  linkAten=:linkAten,
-  Comentarios=:Comentarios,
-  estado=:estado,
-  asistencia=:asistencia,
-  modalidad=:modalidad,
-  idDoctor=:idDoctor,
-  idPaciente=:idPaciente
-  WHERE idAtencion=:idAtencion");
-
- 
-    // Asignando los valores del formulario
-    $sentencia->bindParam(":fechAten",$fechAten);
-    $sentencia->bindParam(":linkAten",$linkAten);
-    $sentencia->bindParam(":Comentarios",$Comentarios);
-    $sentencia->bindParam(":estado",$estado);
-    $sentencia->bindParam(":asistencia",$asistencia);
-    $sentencia->bindParam(":modalidad",$modalidad);
-    $sentencia->bindParam(":idDoctor",$idDoctor);
-    $sentencia->bindParam(":idPaciente",$idPaciente);
-    $sentencia->bindParam(":idAtencion",$txtID);
-    $sentencia->execute();
-
-    $mensaje="Reunión Actualizada correctamente";
-    header("Location:index.php?mensaje=".$mensaje);
-}
-
-  $sentencia=$conexion->prepare("SELECT * FROM `paciente`");
-  $sentencia->execute();
-  $pacientes=$sentencia->fetchAll(PDO::FETCH_ASSOC);
-
-  $sentencia=$conexion->prepare("SELECT * FROM `doctor`");
-  $sentencia->execute();
-  $doctores=$sentencia->fetchAll(PDO::FETCH_ASSOC);
-
-
 ?>
 <?php 
 
@@ -101,6 +25,94 @@ foreach($pacientes2 as $paciente ){
     include("../../templates/Doctor/header.php");
  }
 ?>
+<?php
+
+// Instrucción de recepcion de ID e informacion
+
+if(isset($_GET['txtID'])){
+    $txtID=(isset($_GET['txtID']))?$_GET['txtID']:"";
+
+    $sentencia=$conexion->prepare("SELECT * FROM `atencion` 
+    WHERE idAtencion=:idAtencion");
+    $sentencia->bindParam(":idAtencion",$txtID);
+    $sentencia->execute();
+    $registro=$sentencia->fetch(PDO::FETCH_LAZY);
+
+    $fechAten=$registro["fechAten"];
+    $hora=$registro["hora"];
+    $linkAten=$registro["linkAten"];
+    $Comentarios=$registro["Comentarios"];
+    $estado=$registro["estado"];
+    $asistencia=$registro["asistencia"];
+    $modalidad=$registro["modalidad"];
+    $idDoctor=$registro["idDoctor"];
+    $idPaciente=$registro["idPaciente"];
+}
+
+// Intrucción de recolección de datos
+
+if($_POST){
+    // Recolectamos los datos
+    $txtID=(isset($_POST['txtID']))?$_POST['txtID']:"";
+    $fechAten=(isset($_POST["fechAten"])?$_POST["fechAten"]:"");
+    $hora=(isset($_POST["hora"])?$_POST["hora"]:"");
+    $linkAten=(isset($_POST["linkAten"])?$_POST["linkAten"]:"");
+    $Comentarios=(isset($_POST["Comentarios"])?$_POST["Comentarios"]:"");
+    $estado=(isset($_POST["estado"])?$_POST["estado"]:"");
+    $asistencia=(isset($_POST["asistencia"])?$_POST["asistencia"]:"");
+    $modalidad=(isset($_POST["modalidad"])?$_POST["modalidad"]:"");
+    $idDoctor=(isset($_POST["idDoctor"])?$_POST["idDoctor"]:"");
+    $idPaciente=(isset($_POST["idPaciente"])?$_POST["idPaciente"]:"");
+
+
+    // Actualizamos los datos de la BD
+    $sentencia=$conexion->prepare
+  ("UPDATE atencion SET
+  fechAten=:fechAten,
+  hora=:hora,
+  linkAten=:linkAten,
+  Comentarios=:Comentarios,
+  estado=:estado,
+  asistencia=:asistencia,
+  modalidad=:modalidad,
+  idDoctor=:idDoctor,
+  idPaciente=:idPaciente
+  WHERE idAtencion=:idAtencion");
+
+ 
+    // Asignando los valores del formulario
+    $sentencia->bindParam(":fechAten",$fechAten);
+    $sentencia->bindParam(":hora",$hora);
+    $sentencia->bindParam(":linkAten",$linkAten);
+    $sentencia->bindParam(":Comentarios",$Comentarios);
+    $sentencia->bindParam(":estado",$estado);
+    $sentencia->bindParam(":asistencia",$asistencia);
+    $sentencia->bindParam(":modalidad",$modalidad);
+    $sentencia->bindParam(":idDoctor",$idDoctor);
+    $sentencia->bindParam(":idPaciente",$idPaciente);
+    $sentencia->bindParam(":idAtencion",$txtID);
+    $sentencia->execute();
+
+    if($rol==1){ 
+    $mensaje="Reunión Actualizada correctamente";
+    header("Location:index.php?mensaje=".$mensaje);
+    }else if($rol==2){
+    $mensaje="Reunión Actualizada correctamente";
+    header("Location:../../doctor/index.php?mensaje=".$mensaje);
+    }
+}
+
+  $sentencia=$conexion->prepare("SELECT * FROM `paciente`");
+  $sentencia->execute();
+  $pacientes=$sentencia->fetchAll(PDO::FETCH_ASSOC);
+
+  $sentencia=$conexion->prepare("SELECT * FROM `doctor`");
+  $sentencia->execute();
+  $doctores=$sentencia->fetchAll(PDO::FETCH_ASSOC);
+
+
+?>
+
     <br>
     <br>
 
@@ -161,8 +173,14 @@ value="<?php echo $Comentarios?>">
 value="<?php echo $fechAten?>">
 </div>
 
+<div class="col-md-4" disabled="true">
+<label for="hora" class="form-label">Hora de Reunión</label>
+<input type="time" class="form-control" id="hora" name="hora"
+value="<?php echo $hora?>">
+</div>
 
-<div class="col-md-8" disabled="true">
+
+<div class="col-md-4" disabled="true">
 <label for="linkAten" class="form-label">Link de Reunión</label>
 <input type="text" class="form-control" id="linkAten" name="linkAten"
 value="<?php echo $linkAten?>">
@@ -205,7 +223,11 @@ value="<?php echo $linkAten?>">
 
 <div class="col-12">
 <button type="submit" class="btn btn-primary">Actualizar</button>
-    <a href="../atenciones/index.php" type="button"  class="btn btn-dark">Regresar</a>
+<?php if($rol==1){?>
+<a href="../atenciones/index.php" type="button"  class="btn btn-dark">Regresar</a>
+<?php }else if($rol==2){ ?>
+<a href="../../doctor/index.php" type="button"  class="btn btn-dark">Regresar</a>
+<?php }?>
 </div>
 
 </form>

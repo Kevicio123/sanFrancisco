@@ -1,5 +1,6 @@
 
 <?php
+
 if(isset($_SESSION['correo'])){
 
     $user_session=$_SESSION['correo'];

@@ -102,6 +102,8 @@ $lista_tratamientos=$sentencia->fetchAll(PDO::FETCH_ASSOC);
       <option value="Radiofrafía bucal">Radiofrafía bucal</option>
       <option value="Rayos X panorámicos">Rayos X panorámicos</option>
       <option value="Radiofrafía Periapical">Radiofrafía Periapical</option>
+      <option value="Radiofrafía Panorámica">Radiofrafía Panorámica</option>
+      <option value="Radiofrafía Lateral de Cráneo">Radiofrafía Lateral de Cráneo</option>
     </select>
     </div>
 

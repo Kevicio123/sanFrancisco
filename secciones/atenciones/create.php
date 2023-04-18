@@ -1,43 +1,5 @@
 <?php 
 include ("../../db.php");
-
-if($_POST){
-    // Recolectamos los datos
-    $fechAten=(isset($_POST["fechAten"])?$_POST["fechAten"]:"");
-    $linkAten=(isset($_POST["linkAten"])?$_POST["linkAten"]:"");
-    $Comentarios=(isset($_POST["Comentarios"])?$_POST["Comentarios"]:"");
-    $estado=(isset($_POST["estado"])?$_POST["estado"]:"");
-    $asistencia=(isset($_POST["asistencia"])?$_POST["asistencia"]:"");
-    $modalidad=(isset($_POST["modalidad"])?$_POST["modalidad"]:"");
-    $idDoctor=(isset($_POST["idDoctor"])?$_POST["idDoctor"]:"");
-    $idPaciente=(isset($_POST["idPaciente"])?$_POST["idPaciente"]:"");
-
-    // Insertamos los datos a la BD
-    $sentencia=$conexion->prepare("INSERT INTO atencion(idAtencion,fechAten,linkAten,Comentarios,estado,asistencia,modalidad,idDoctor,idPaciente)
-            VALUES(null,:fechAten,:linkAten,:Comentarios,:estado,:asistencia,:modalidad,:idDoctor,:idPaciente)");
-
-    // Asignando los valores del formulario
-    $sentencia->bindParam(":fechAten",$fechAten);
-    $sentencia->bindParam(":linkAten",$linkAten);
-    $sentencia->bindParam(":Comentarios",$Comentarios);
-    $sentencia->bindParam(":estado",$estado);
-    $sentencia->bindParam(":asistencia",$asistencia);
-    $sentencia->bindParam(":modalidad",$modalidad);
-    $sentencia->bindParam(":idDoctor",$idDoctor);
-    $sentencia->bindParam(":idPaciente",$idPaciente);
-    $sentencia->execute();
-    $mensaje="Atención Creada Correctamente";
-    header("Location:index.php?mensaje=".$mensaje);
-}
-
-$sentencia=$conexion->prepare("SELECT * FROM `paciente`");
-$sentencia->execute();
-$lista_pacientes=$sentencia->fetchAll(PDO::FETCH_ASSOC);
-
-$sentencia=$conexion->prepare("SELECT * FROM `doctor`");
-$sentencia->execute();
-$lista_doctores=$sentencia->fetchAll(PDO::FETCH_ASSOC);
-
 ?>
 
 <?php 
@@ -64,6 +26,55 @@ foreach($pacientes2 as $paciente ){
     include("../../templates/Doctor/header.php");
  }
 ?>
+
+<?php
+if($_POST){
+    // Recolectamos los datos
+    $fechAten=(isset($_POST["fechAten"])?$_POST["fechAten"]:"");
+    $hora=(isset($_POST["hora"])?$_POST["hora"]:"");
+    $linkAten=(isset($_POST["linkAten"])?$_POST["linkAten"]:"");
+    $Comentarios=(isset($_POST["Comentarios"])?$_POST["Comentarios"]:"");
+    $estado=(isset($_POST["estado"])?$_POST["estado"]:"");
+    $asistencia=(isset($_POST["asistencia"])?$_POST["asistencia"]:"");
+    $modalidad=(isset($_POST["modalidad"])?$_POST["modalidad"]:"");
+    $idDoctor=(isset($_POST["idDoctor"])?$_POST["idDoctor"]:"");
+    $idPaciente=(isset($_POST["idPaciente"])?$_POST["idPaciente"]:"");
+
+    // Insertamos los datos a la BD
+    $sentencia=$conexion->prepare("INSERT INTO atencion(idAtencion,fechAten,hora,linkAten,Comentarios,estado,asistencia,modalidad,idDoctor,idPaciente)
+            VALUES(null,:fechAten,:hora,:linkAten,:Comentarios,:estado,:asistencia,:modalidad,:idDoctor,:idPaciente)");
+
+    // Asignando los valores del formulario
+    $sentencia->bindParam(":fechAten",$fechAten);
+    $sentencia->bindParam(":hora",$hora);
+    $sentencia->bindParam(":linkAten",$linkAten);
+    $sentencia->bindParam(":Comentarios",$Comentarios);
+    $sentencia->bindParam(":estado",$estado);
+    $sentencia->bindParam(":asistencia",$asistencia);
+    $sentencia->bindParam(":modalidad",$modalidad);
+    $sentencia->bindParam(":idDoctor",$idDoctor);
+    $sentencia->bindParam(":idPaciente",$idPaciente);
+    $sentencia->execute();
+    if($rol==1){ 
+    $mensaje="Atención Creada Correctamente";
+    header("Location:index.php?mensaje=".$mensaje);
+    }else if(rol==2){
+    $mensaje="Atención Creada Correctamente";
+    header("Location:../../doctor/index.php?mensaje=".$mensaje); 
+    }
+}
+
+$sentencia=$conexion->prepare("SELECT * FROM `paciente`");
+$sentencia->execute();
+$lista_pacientes=$sentencia->fetchAll(PDO::FETCH_ASSOC);
+
+$sentencia=$conexion->prepare("SELECT * FROM `doctor`");
+$sentencia->execute();
+$lista_doctores=$sentencia->fetchAll(PDO::FETCH_ASSOC);
+
+?>
+
+
     <br>
     <br>
 
@@ -109,8 +120,12 @@ foreach($pacientes2 as $paciente ){
     <input type="date" class="form-control" id="fechAten" name="fechAten">
     </div>
 
+    <div class="col-md-4" disabled="true">
+    <label for="hora" class="form-label">Hora de Reunión</label>
+    <input type="time" class="form-control" id="hora" name="hora">
+    </div>
 
-    <div class="col-md-8" disabled="true">
+    <div class="col-md-4" disabled="true">
     <label for="linkAten" class="form-label">Link de Reunión</label>
     <input type="text" class="form-control" id="linkAten" name="linkAten">
     </div>
@@ -151,7 +166,12 @@ foreach($pacientes2 as $paciente ){
 
     <div class="col-12">
     <button type="submit" class="btn btn-primary">Enviar</button>
-        <a href="../atenciones/index.php" type="button"  class="btn btn-dark">Regresar</a>
+    <?php if($rol==1){?>
+    <a href="../atenciones/index.php" type="button"  class="btn btn-dark">Regresar</a>
+    <?php }else if($rol==2){ ?>
+    <a href="../../doctor/index.php" type="button"  class="btn btn-dark">Regresar</a>
+    <?php }?>
+
     </div>
 
     </form>

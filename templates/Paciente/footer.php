@@ -1,30 +1,19 @@
 </main>
-<br><br><br><br><br><br><br>
-  <footer>
+<br><br><br><br><br><br><br><br>
+  <footer class="footer-dark">
 
-  <div class="footer-dark">
-        <footer>
-          
-            <br>
-        <nav class="navbar navbar-expand navbar-dark  bg-dark ">
-            <div class="container" align="center">
-              <br>
-              <br>
-                <p class="copyright"  style="color:white">Consultorio Dental San Francisco © 2023 <br> Todos los derechos reservados </p>
-                
-                <br>
-                <br>
-            </div>
-            <br>
-            <br>
-            <br>
-            <br>
-        </footer>
-    </nav>
-    </div>
-
+      
+  
+        
+        <div class="container" align="center">
+          <br>
+        <p class="copyright"  style="color:white">Consultorio Dental San Francisco © 2023 <br> Todos los derechos reservados </p>
+          <br>        
+        </div>
+        
+      
     
-    </footer>
+  </footer>
     <!-- Bootstrap JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
       integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">

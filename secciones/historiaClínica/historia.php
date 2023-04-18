@@ -491,7 +491,9 @@ if(isset($_GET['txtID'])){
 
 </tr>
 
-<?php foreach($lista_atenciones as $atencion){ ?>
+<?php foreach($lista_atenciones as $atencion){ 
+    
+    if($atencion['modalidad']=='Presencial'){?>
     
 <tr class="table2" align="center">
     
@@ -516,7 +518,7 @@ if(isset($_GET['txtID'])){
     </td>
 </tr>
 
-<?php } ?>
+<?php }} ?>
 </table>
 
 

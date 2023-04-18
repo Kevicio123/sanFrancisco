@@ -2,7 +2,7 @@
 @session_start();
 
 $url_base="http://localhost/proySanFranciscoPHP/";
-$varsession=$_SESSION['correo'];
+$varsession= $_SESSION['correo'];
 if($varsession==null || $varsession==''){
 
     header("Location: login.php");

@@ -168,13 +168,13 @@ foreach($pacientes as $paciente ){
         </div>
     </div>
 
-    <div class="">
+    <div class="visually-hidden-focusable">
     <label for="idHistoria" class="form-label">ID</label>
     <input value="<?php echo $idHistoria;?>"
     type="text" class="form-control" id="idHistoria" name="idHistoria">
     </div>
 
-    <div class="">
+    <div class="visually-hidden-focusable">
     <label for="txtID" class="form-label">ID</label>
     <input value="<?php echo $txtID;?>"
     type="text" class="form-control" id="txtID" name="txtID">

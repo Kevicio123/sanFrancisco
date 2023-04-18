@@ -38,12 +38,12 @@
         var tabla= document.querySelector('#tabla');
 
         var dataTable = new DataTable(tabla,{
-            perPage:3,
-            perPageSelect:[3,6,9,12],
-            "language": {
-              "url":"https://cdn.datatables.net/plug-ins/1.13.1/i18n/es-ES.json"
+        perPage:3,
+        perPageSelect:[3,6,9,12],
+        "language": {
+        "url":"./dataTableSpain.json"
         }
-      });
+        });
 
 
     </script>
@@ -59,6 +59,40 @@
   
         if (result.isConfirmed) {
         window.location="index.php?txtID="+id;
+        } 
+        })  
+    }
+
+</script>
+
+<script>
+    function borrarRepo(id){
+        
+        Swal.fire({
+        title: '¿Desea borrar todas las imágenes subidas?',
+        showCancelButton: true,
+        confirmButtonText: 'Sí, Borrar',
+        }).then((result) => {
+  
+        if (result.isConfirmed) {
+        window.location="index2.php?txtID="+id;
+        } 
+        })  
+    }
+
+</script>
+
+<script>
+    function borrarRepo2(id){
+        
+        Swal.fire({
+        title: '¿Desea borrar todas las imágenes subidas?',
+        showCancelButton: true,
+        confirmButtonText: 'Sí, Borrar',
+        }).then((result) => {
+  
+        if (result.isConfirmed) {
+        window.location="index2.php?txtID="+id;
         } 
         })  
     }

@@ -112,17 +112,10 @@ if($_POST){
     type="text" class="form-control" id="txtID" name="txtID">
     </div>
 
-    <div class="col-md-4" class="visually-focusable">
+    <div class="col-md-4" class="visually-focusable" style="pointer-events: none;">
     <label for="tipExamen" class="form-label">Nombre del Examen</label>
-    <select id="tipExamen" name="tipExamen" class="form-select">
-    <option <?php echo('tipExamen')?"selected":"";?>
-      value="<?php echo $tipExamen; ?>">
-      <?php echo $tipExamen; ?></option>
-      <option value="Radiofrafía Bitewing">Radiofrafía Bitewing</option>
-      <option value="Radiofrafía bucal">Radiofrafía bucal</option>
-      <option value="Rayos X panorámicos">Rayos X panorámicos</option>
-      <option value="Radiofrafía Periapical">Radiofrafía Periapical</option>
-    </select>
+    <input class="form-control" value="<?php echo $tipExamen;?>" id="tipExamen" name="tipExamen">
+    
     </div>
     
     <div class="col-md-4">
@@ -139,7 +132,7 @@ if($_POST){
     </select>
     </div>
 
-    <div class="col-md-4">
+    <div class="col-md-4" style="pointer-events: none;">
     <label for="idPaciente" class="form-label">Paciente Tratante</label>
     <select id="idPaciente" name="idPaciente" class="form-select">
     <?php foreach($lista_pacientes as $paciente)            
@@ -152,7 +145,7 @@ if($_POST){
     </select>
     </div>
 
-    <div class="col-md-8" disabled="true">
+    <div class="col-md-8" style="pointer-events: none;">
     <label for="comentarios" class="form-label">Comentarios</label>
     <input type="text" value="<?php echo $comentarios;?>" class="form-control" id="comentarios" name="comentarios">
     </div>

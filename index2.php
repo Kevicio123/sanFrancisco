@@ -51,7 +51,7 @@
         </div>
         <div class="col-md-4">
             <div class="card" style="width: 16rem;">
-            <a href="<?php echo $url_base?>secciones/atenciones/">
+            <a href="<?php echo $url_base?>doctor/index.php">
             <img class="card-img-top" src="./images/administrador/cita.png" alt="Card image cap">
             <div class="card-body">
             <h4 class="card-text" align="center">Citas Médicas</h4>

@@ -10,12 +10,14 @@ if(isset($_GET['txtID'])){
     $registro=$sentencia->fetch(PDO::FETCH_LAZY);
   
       $fechAten=$registro["fechAten"];
+      $hora=$registro["hora"];
       $linkAten=$registro["linkAten"];
       $Comentarios=$registro["Comentarios"];
       $estado=$registro["estado"];
       $asistencia=$registro["asistencia"];
       $idDoctor=$registro["idDoctor"];
       $idPaciente=$registro["idPaciente"];
+      $modalidad=$registro["modalidad"];
   
       $sentencia=$conexion->prepare("SELECT *,
       (SELECT dni FROM paciente 
@@ -39,10 +41,22 @@ if(isset($_GET['txtID'])){
 <?php include("../templates/Paciente/header.php");?>
 <br><br>
 
+<?php
+setlocale(LC_TIME, 'es_ES.UTF-8', 'es_ES', 'es'); // establece la configuración regional en español
+$fecha = $fechAten; // fecha de ejemplo en formato ISO
+$timestamp = strtotime($fecha);
+$fecha_formateada = strftime('%e de %B del %Y', $timestamp);
+                ?>
+<?php
+$hora = $hora; // ejemplo de dato de tipo time
+$hora_am_pm = date("h:i A", strtotime($hora));
+?>
+
 <div class="jumbotron">
-  <h3 class="display-4">Atención Médica: Modalidad Virtual</h3>
+  <h3 class="display-4">Atención Médica: Modalidad <?php echo $modalidad;?></h3>
   <hr class="my-4"> 
-  <p class="lead"><strong> Fecha de Atención: </strong> <br><?php echo $fechAten;?></p>
+  <p class="lead"><strong> Fecha de Atención: </strong> <br><?php echo $fecha_formateada;?></p>
+  <p class="lead"><strong> Hora: </strong> <br><?php echo $hora_am_pm;?></p>
   <p class="lead"><strong> Estado de Reunión: </strong> <br> <?php echo $estado ?> </p>
   <p class="lead"><strong> Médico en Atención: </strong> <br> <?php echo $doctor ?> </p>
   <p class="lead"><strong> Paciente Tratante: </strong> <br> <?php echo $dni ?> </p>

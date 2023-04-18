@@ -62,20 +62,16 @@ $url_base="http://localhost/proySanFranciscoPHP/";
   
   <div class="card" >
   <div class="card-body">
-    <div class="p-3 mb-2 bg-primary text-white"><h5 class="card-title">Tratamiento en Curso: <?php echo $paciente['nomTrata'];?></h5></div>
+    <div class="p-3 mb-2 bg-info text-white"><h5 class="card-title">Tratamiento de <?php echo $paciente['dx'];?></h5></div>
     <div class="p-3 mb-2 bg-light text-dark">
-    <h6 class="card-subtitle mb-2 text-muted"><b>Paciente:</b> <?php echo $paciente['nombres']?></h6>
-    
-    <p class="card-text"><b>Servicio:</b> <?php echo $paciente['nomSer']?></p>
-    <p class="card-text"><b>Médico Tratante:</b> <?php echo $doc?></p>
-    <p class="card-text"><b>Estado:</b> <?php echo $paciente['estadoTratamiento']?></p>
+    <p class="card-title"><b>Paciente:</b> <?php echo $paciente['nombres'].' '.$paciente['apePat'].' '.$paciente['apaeMat']?></p>
+    <p class="card-title"><b>Médico Tratante:</b> <?php echo $doc?></p>
+    <p class="card-title"><b>Estado:</b> <?php echo $paciente['estadoTratamiento']?></p>
+
+    <a href="atenciones.php" class="btn btn-success">Atenciones</a>
+    <a href="examen.php" class="btn btn-dark">Exámenes</a>
     </div>
-   
-    <a href="atenciones.php" class="btn btn-dark">Atenciones</a>
-    <a href="examen.php" class="btn btn-primary">Exámenes</a>
-    
-    <br>
-    <br>
+
   </div>
   </div>
 

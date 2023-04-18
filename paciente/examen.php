@@ -19,7 +19,7 @@ include("../db.php");
     FROM `examen` e 
     INNER JOIN `paciente` p ON e.idPaciente =p.idPaciente
     INNER JOIN `tratamiento` t ON e.idTrat = t.idTrat
-    WHERE p.idUser =$id");
+    WHERE p.idUser ='$id'");
     $sentencia->execute();
     $lista_pacientes=$sentencia->fetchAll(PDO::FETCH_ASSOC);
 
@@ -27,7 +27,7 @@ include("../db.php");
     FROM `tratamiento` t 
     INNER JOIN `examen` e ON e.idTrat = t.idTrat
     INNER JOIN `paciente` p ON p.idPaciente =t.idPaciente
-    WHERE p.idUser =$id");
+    WHERE p.idUser ='$id'");
     $sentencia2->execute();
     $lista_examenes=$sentencia2->fetchAll(PDO::FETCH_ASSOC);
 
@@ -35,7 +35,7 @@ include("../db.php");
         $examen=$examen['tipExamen'];
      }
 
-     $n=0;
+     $n=-1;
      
 
 
@@ -47,8 +47,6 @@ include("../db.php");
     
     <h2 align="center">Lista de Examenes</h2>
 
-
-    <br>
     
 
     <br>
@@ -57,16 +55,10 @@ include("../db.php");
         <div class="card-body">
         
         <div class="table-responsive-sm">
-            <table class="table table-striped table-hover" id="tabla">
-                <thead>
+            <table class="table" id="tabla">
+                <thead class="thead-dark">
                     <tr>
-                        <th scope="col">N°</th>
-                        <th scope="col">Examen</th>
-                        <th scope="col">Detalle</th>
-                        <th scope="col">Paciente</th>
-                        <th scope="col">Tratamiento</th>
-                        <th scope="col">Estado</th>
-                        <th scope="col"></th>
+                        <th scope="col">N° Ordenar</th>
                         
                         
                         
@@ -76,28 +68,28 @@ include("../db.php");
                 <?php foreach($lista_pacientes as $paciente) 
                 
                 { ?>
-            
-                
                     <tr class="">
-                        <td><?php $n=$n+1; echo $n;?></td>
-                        <td><?php echo $examen ?></td>
-                        <td><?php echo $paciente['comentarios']; ?></td>
-                        <td><?php echo $paciente['nombres']; ?></td>
-                        <td><?php echo $paciente['nomTrata']; ?></td>
-                        <td><?php if (isset($paciente['examen'])?$paciente['examen']:""){ ?><b><p class="text-success">Enviado</p></b>
-                        <?php
-                        }else{ ?> 
-                           <b><p class="text-danger">Pendiente</p></b>
-                          </td> <?php } ?> 
-                        <td> <a name="" id="" class="btn btn-primary" 
-                        href="edit.php?txtID=<?php echo $paciente['idExamen']; ?>"
-                        role="button">Enviar Examen</a>
-                        
-                        
-            
-        </td>
-                      
-                    </td>
+                        <td>
+                    
+                        <div class="card">
+                        <div class="card-header">
+                           
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title"> <?php $n=$n+1; echo $n.'. ';?>Examen de <?php echo $paciente['tipExamen'] ?></h5>
+                            <p class="card-text"><?php echo $paciente['Comentarios']; ?></p>
+                            <?php if (isset($paciente['examen'])?$paciente['examen']:""){ ?> <b> <p class="text-success">Enviado</p></b>
+                            <?php
+                            }else{ ?> 
+                            <b><p class="text-danger">Pendiente</p></b>
+                            <?php } ?> 
+                            <a name="" id="" class="btn btn-primary" 
+                            href="edit.php?txtID=<?php echo $paciente['idExamen']; ?>" role="button">Enviar Examen</a>
+                            
+                        </div>
+                        </div>
+                        <br>
+                        </td>
                     
                     </tr>
                     
@@ -131,6 +123,6 @@ include("../db.php");
 
 
 
-    <?php include("../templates/Paciente/footer.php");?>
+    <?php include("../templates/footer.php");?>
 
     
