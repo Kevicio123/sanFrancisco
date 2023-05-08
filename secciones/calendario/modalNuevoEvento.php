@@ -12,11 +12,6 @@ foreach($pacientes as $paciente ){
     $rol=$paciente['idRoles'];
 }
 
-    if($rol==1){
-      include("../../templates/header2.php");   
-    }else if($rol==2){
-      include("../../templates/doctor/header2.php");
-    }
 ?>
 
 <?php
