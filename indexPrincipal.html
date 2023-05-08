@@ -1,32 +1,3 @@
-<?php 
-include ("./db.php");
-
-if($_POST){
-    // Recolectamos los datos
-    $asunto=(isset($_POST["asunto"])?$_POST["asunto"]:"");
-    $detalle=(isset($_POST["detalle"])?$_POST["detalle"]:"");
-
-    // Insertamos los datos a la BD
-    $sentencia=$conexion->prepare("INSERT INTO sugerencias(idSug,asunto,detalle)
-            VALUES(null,:asunto,:detalle)");
-    
-    // Asignando los valores del formulario
-    $sentencia->bindParam(":asunto",$asunto);
-    $sentencia->bindParam(":detalle",$detalle);
-    $sentencia->execute();
-    $mensaje="Sugerencia Enviada con Éxito";
-    header("Location:index.php?mensaje=".$mensaje);
-}
-
-if(isset($_GET['mensaje'])){ ?>
-  <script>
-      Swal.fire({icon:"success",
-      title:"<?php echo $_GET['mensaje']; ?>"});
-  </script>
-  <?php } 
-?>
-
-
 
 
 <!doctype html>

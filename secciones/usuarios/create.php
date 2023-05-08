@@ -9,7 +9,7 @@ if($_POST){
 
     // Insertamos los datos a la BD
     $sentencia=$conexion->prepare("INSERT INTO users(idUser,correo,contrasenia,idRoles)
-            VALUES(null,:correo,:contrasenia,:idRoles)");
+            VALUES(null,:correo,sha1(:contrasenia),:idRoles)");
     
     // Asignando los valores del formulario
     $sentencia->bindParam(":correo",$correo);

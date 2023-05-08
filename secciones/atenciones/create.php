@@ -60,7 +60,7 @@ if($_POST){
     header("Location:index.php?mensaje=".$mensaje);
     }else if(rol==2){
     $mensaje="Atención Creada Correctamente";
-    header("Location:../../doctor/index.php?mensaje=".$mensaje); 
+    header("Location:../../doctor/?mensaje=".$mensaje); 
     }
 }
 

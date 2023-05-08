@@ -30,6 +30,13 @@ if(isset($_GET['txtID'])){
         
     }
 
+    $sentencia4=$conexion->prepare("SELECT *
+    FROM `tratamiento` t 
+    INNER JOIN `paciente` p ON t.idPaciente =p.idPaciente
+    WHERE p.idPaciente =$txtID");
+    $sentencia4->execute();
+    $tratamientos=$sentencia4->fetchAll(PDO::FETCH_ASSOC);
+
     $link="http://localhost/proySanFranciscoPHP/secciones/historiaCl%C3%ADnica/historia.php?txtID=$txtID;";
 
 
@@ -69,8 +76,12 @@ foreach($pacientes as $paciente ){
 <div class="container">
 
 <h3 align="center">Repositorio de Imágenes</h3>
-
 <br>
+<?php foreach($tratamientos as $tratamiento ){ ?>
+<h4>Tratamiento: <?php echo $tratamiento['dx']?></h4>
+
+<?php } ?>
+
 <p><b> Paciente: </b><?php echo $nombrePaciente?></p>
 
 

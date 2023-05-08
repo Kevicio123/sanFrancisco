@@ -144,7 +144,7 @@ mysqli_close($conexion);
                         <button type="submit" class="btn btn-login float-right">Ingresar</button>
                       </div>
                 </form>
-                <div class="copy-text"> <i class="fa fa-heart"></i>  <a href="indexPrincipal.php">Regresar a la página principal</a></div>
+                <div class="copy-text"> <i class="fa fa-heart"></i>  <a href="indexPrincipal.html">Regresar a la página principal</a></div>
         </div>
 
 

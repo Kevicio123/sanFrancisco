@@ -7,13 +7,13 @@ include ("../../db.php");
 if(isset($_GET['txtID'])){
     $txtID=(isset($_GET['txtID']))?$_GET['txtID']:"";
 
-    $sentencia=$conexion->prepare("SELECT * FROM `paciente` WHERE idPaciente=:idPaciente");
+    $sentencia=$conexion->prepare("SELECT * FROM `paciente` 
+    WHERE idPaciente=:idPaciente");
     $sentencia->bindParam(":idPaciente",$txtID);
     $sentencia->execute();
     $registro=$sentencia->fetch(PDO::FETCH_LAZY);
 
     $dni=$registro["dni"];
-
     
 }
 
@@ -25,10 +25,11 @@ if($_POST){
     $intraoral=(isset($_FILES["intraoral"]['name'])?$_FILES["intraoral"]['name']:"");
     $rostro=(isset($_FILES["rostro"]['name'])?$_FILES["rostro"]['name']:"");
     $idPaciente=(isset($_POST['txtID'])?$_POST['txtID']:"");
+    $idTrat=(isset($_POST['idTrat'])?$_POST['idTrat']:"");
 
     $sentencia=$conexion->prepare
-    ("INSERT INTO repositorio(idRepo,odontograma,moldeDental,intraoral,rostro,idPaciente)
-    VALUES (null,:odontograma,:moldeDental,:intraoral,:rostro,:idPaciente)");
+    ("INSERT INTO repositorio(idRepo,odontograma,moldeDental,intraoral,rostro,idPaciente,idTrat)
+    VALUES (null,:odontograma,:moldeDental,:intraoral,:rostro,:idPaciente,:idTrat)");
 
     $fecha= new DateTime();
 
@@ -61,6 +62,7 @@ if($_POST){
     $sentencia->bindParam(":intraoral",$nombreArchivo3);
     $sentencia->bindParam(":rostro",$nombreArchivo4);
     $sentencia->bindParam(":idPaciente",$txtID);
+    $sentencia->bindParam(":idTrat",$idTrat);
     $sentencia->execute();
     $mensaje="Archivos Subidos correctamente";
     header("Location:index.php?mensaje=".$mensaje);
@@ -68,6 +70,11 @@ if($_POST){
 
     }
 
+    $sentencia=$conexion->prepare("SELECT * FROM `tratamiento`
+    WHERE idPaciente='$txtID'");
+    $sentencia->execute();
+    $lista_tratamiento=$sentencia->fetchAll(PDO::FETCH_ASSOC);
+  
 
 
 ?>
@@ -91,10 +98,24 @@ if($_POST){
     type="text" class="form-control" id="idPaciente" name="idPaciente">
     </div>
 
-    <div class="col-md-12">
+    <div class="col-md-6">
     <label for="dni" class="form-label">DNI</label>
     <input type="char" class="form-control" id="dni" name="dni" value="<?php echo $dni;?>" readonly>
     </div>
+
+    <div class="col-6">
+    <label for="idTrat" class="form-label">Tratamiento</label>
+    <select id="idTrat" name="idTrat" class="form-select" required>
+    <option selected>Tratamiento</option>
+    <?php foreach($lista_tratamiento as $tratamiento)            
+    { ?>
+      <option value="<?php echo $tratamiento['idTrat']; ?>">
+        <?php echo $tratamiento['nomTrata']; ?>
+      </option>
+    <?php } ?>
+    </select>
+    </div>
+
 
     <div class="col-md-4">
     <label for="odontograma" class="form-label">Adjunte Imagen Odontograma: </label>

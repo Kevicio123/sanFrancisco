@@ -51,35 +51,34 @@ $lista_doctores=$sentencia->fetchAll(PDO::FETCH_ASSOC);
                         <th scope="col">Especialidad</th>
                         <th scope="col">Celular</th>           
                         <th scope="col">Usuario</th>
-                        <th scope="col">Acciones</th>
+                        <th scope="col" >Acciones</th>
                         
                     </tr>
                 </thead>
+                <tfoot>
                 <?php foreach($lista_doctores as $doctor) 
                 
                 { ?>
-                <tfoot>
                     <tr class="">
                         <td scope="row"><?php echo $doctor['dni']; ?></td>
                         <td><?php echo $doctor['nombres']." ".$doctor['apePat']." ".$doctor['apaeMat']; ?></td>
                         <td><?php echo $doctor['especialidad']; ?></td>
                         <td><?php echo $doctor['celular']; ?></td>
                         <td><?php echo $doctor['usuario']; ?></td>
-                        <td>
+                        <td colspan="3">
                         <a name="" id="" class="btn btn-secondary" 
                          href="edit.php?txtID=<?php echo $doctor['idDoctor']; ?>" 
                          role="button">Editar</a>
                         |
                         <a name="" id="" class="btn btn-danger" 
-                        href="javascript:borrar(<?php echo $doctor['idDoctor']; ?>);"
-                         role="button">Eliminar</a>
-                        
-                        
-                    </td>
-                    </tr>
+                        href="javascript:borrar(<?php echo $doctor['idDoctor']; ?>)"
+                         role="button">Eliminar</a> 
+                        </td>
+                    </tr>             
                 </tfoot>
                 <?php } ?>
             </table>
+            
             <a name="" id="" class="btn btn-dark" 
             href="create.php" role="button">Agregar Doctor</a>
         </div>
