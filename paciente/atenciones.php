@@ -2,7 +2,7 @@
 
 include("../db.php");
     session_start();
-    
+
     $user_session=$_SESSION['correo'];
     $paciente = $conexion->prepare
     ("SELECT *,
@@ -15,14 +15,15 @@ include("../db.php");
         $id=$paciente['id'];
      }
 
-    $sentencia=$conexion->prepare("SELECT *
-    FROM `atencion` a 
-    INNER JOIN `paciente` p ON a.idPaciente =p.idPaciente
-    INNER JOIN `doctor` d ON a.idDoctor = d.idDoctor
-    WHERE p.idUser =$id");
-    $sentencia->execute();
-    $lista_pacientes=$sentencia->fetchAll(PDO::FETCH_ASSOC);
-    $n=0;
+     $sentencia = $conexion->prepare("SELECT *
+     FROM `eventoscalendar` a 
+     INNER JOIN `paciente` p ON a.idPaciente =p.idPaciente
+     INNER JOIN `doctor` d ON a.idDoctor = d.idDoctor
+     WHERE p.idUser = :id");
+     $sentencia->bindValue(':id', $id, PDO::PARAM_INT);
+     $sentencia->execute();
+     $lista_pacientes=$sentencia->fetchAll(PDO::FETCH_ASSOC);
+     $n=0;
 
 ?>
 
@@ -54,7 +55,7 @@ $url_base="http://localhost/proySanFranciscoPHP/";
     <div class="row">
     <?php foreach ($lista_pacientes as $paciente) { ?>
 
-      <?php if ($paciente['estado'] == "Culminado") { ?>
+      <?php if ($paciente['estado'] == "Asistencia") { ?>
     <div class="col-md-4">
       <div class="card" style="width: 20rem;">
         <div class="card-body">
@@ -62,13 +63,13 @@ $url_base="http://localhost/proySanFranciscoPHP/";
           <div class="p-3 mb-2 bg-light text-dark">
                 <?php
                 setlocale(LC_TIME, 'es_ES.UTF-8', 'es_ES', 'es'); // establece la configuración regional en español
-                $fecha = $paciente['fechAten']; // fecha de ejemplo en formato ISO
+                $fecha = $paciente['fecha_inicio']; // fecha de ejemplo en formato ISO
                 $timestamp = strtotime($fecha);
                 $fecha_formateada = strftime('%e de %B del %Y', $timestamp);
                 ?>
 
                 <?php
-                $hora = $paciente['hora']; // ejemplo de dato de tipo time
+                $hora = $paciente['horainicio']; // ejemplo de dato de tipo time
                 $hora_am_pm = date("h:i A", strtotime($hora));
                 ?>
 
@@ -76,13 +77,13 @@ $url_base="http://localhost/proySanFranciscoPHP/";
             <p class="card-title"><b>Hora:</b> <?php echo $hora_am_pm;?></p>
             <p class="card-title"><b>Médico Tratante:</b> <?php echo $paciente['nombres']?></p>
             <p class="card-title"><b>Modalidad:</b> <?php echo $paciente['modalidad']?></p>
-            <?php if ($paciente['estado'] == "Culminado") { ?>
+            <?php if ($paciente['estado'] == "Asistencia") { ?>
               <p class="card-title"> <b>Estado: <p class="text-success"><?php echo $paciente['estado']; ?></p></b> </p>
             <?php } else { ?> 
               <p class="card-title"> <b>Estado: <p class="text-danger"><?php echo $paciente['estado']; ?></p></b> </p>
             <?php } ?>
           </div>
-          <a href="detalle.php?txtID=<?php echo $paciente['idAtencion']; ?>" class="btn btn-dark">Detalle</a>
+          <a href="detalle.php?txtID=<?php echo $paciente['id']; ?>" class="btn btn-dark">Detalle</a>
         </div>
       </div>
       <br>
@@ -95,12 +96,12 @@ $url_base="http://localhost/proySanFranciscoPHP/";
           <div class="p-3 mb-2 bg-light text-dark">
                 <?php
                 setlocale(LC_TIME, 'es_ES.UTF-8', 'es_ES', 'es'); // establece la configuración regional en español
-                $fecha = $paciente['fechAten']; // fecha de ejemplo en formato ISO
+                $fecha = $paciente['fecha_inicio']; // fecha de ejemplo en formato ISO
                 $timestamp = strtotime($fecha);
                 $fecha_formateada = strftime('%e de %B del %Y', $timestamp);
                 ?>
                 <?php
-                $hora = $paciente['hora']; // ejemplo de dato de tipo time
+                $hora = $paciente['horainicio']; // ejemplo de dato de tipo time
                 $hora_am_pm = date("h:i A", strtotime($hora));
                 ?>
             <p class="card-title"><b>Fecha de la Reunión:</b> <?php echo $fecha_formateada;?></p>
@@ -113,7 +114,7 @@ $url_base="http://localhost/proySanFranciscoPHP/";
               <p class="card-title"> <b>Estado: <p class="text-danger"><?php echo $paciente['estado']; ?></p></b> </p>
             <?php } ?>
           </div>
-          <a href="detalle.php?txtID=<?php echo $paciente['idAtencion']; ?>" class="btn btn-dark">Detalle</a>
+          <a href="detalle.php?txtID=<?php echo $paciente['id']; ?>" class="btn btn-dark">Detalle</a>
         </div>
       </div>
       <br>

@@ -27,12 +27,13 @@
 
         <div class="col-md-4">
             <div class="card" style="width: 16rem;">
-            <img class="card-img-top" src="./images/administrador/chatbot.jpg" alt="Card image cap">
+            <a href="<?php echo $url_base?>paciente/examen.php">
+            <img class="card-img-top" src="./images/administrador/examenes.jpg" alt="Card image cap">
             <div class="card-body">
-            <h4 class="card-text" align="center">Chatbot</h4>
+            <h4 class="card-text" align="center">Envio de Exámenes Médicos</h4>
+            </a>
             </div>
-            </div>      
-             
+            </div>         
         </div>
 
         <div class="col-md-4">
@@ -60,18 +61,17 @@
 
         <div class="col-md-4">
             <div class="card" style="width: 16rem;">
-            <a href="<?php echo $url_base?>paciente/examen.php">
-            <img class="card-img-top" src="./images/administrador/examenes.jpg" alt="Card image cap">
+            <img class="card-img-top" src="./images/administrador/chatbot.jpg" alt="Card image cap">
             <div class="card-body">
-            <h4 class="card-text" align="center">Envio de Exámenes Médicos</h4>
-            </a>
+            <h4 class="card-text" align="center">Chatbot</h4>
             </div>
-            </div>         
+            </div>      
+             
         </div>
 
         <div class="col-md-4">
             <div class="card" style="width: 16rem;">
-            <a href="<?php echo $url_base?>secciones/examen/">
+            <a href="<?php echo $url_base?>paciente/preguntasFrecuentes.php">
             <img class="card-img-top" src="./images/administrador/preguntas.jpg" alt="Card image cap">
             <div class="card-body">
             <h4 class="card-text" align="center">Preguntas Frecuentes</h4>

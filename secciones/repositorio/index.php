@@ -82,13 +82,13 @@ if(isset($_GET['txtID'])){
 
 // Instrucción de mostrado de Tabla
 
-    $sentencia=$conexion->prepare("SELECT *,
-    (SELECT correo FROM users 
-    WHERE users.idUser=paciente.idUser limit 1) as usuario
-    FROM `paciente`");
-    $sentencia->execute();
-    $lista_pacientes=$sentencia->fetchAll(PDO::FETCH_ASSOC);
-
+        $sentencia=$conexion->prepare("SELECT *,
+        (SELECT correo FROM users 
+        WHERE users.idUser=paciente.idUser limit 1) as usuario
+        FROM `paciente`");
+        $sentencia->execute();
+        $lista_pacientes=$sentencia->fetchAll(PDO::FETCH_ASSOC);
+    
 
 
 ?>

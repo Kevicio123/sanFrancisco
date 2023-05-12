@@ -18,7 +18,7 @@ foreach($pacientes as $paciente ){
 
 include ("./config.php");
 
-if($rol==1){
+if($rol==2){
 if(isset($_SESSION['correo'])) {
   $user_session = $_SESSION['correo'];
   
@@ -43,7 +43,7 @@ if(isset($_SESSION['correo'])) {
   $lista_doctores=$sentencia->get_result()->fetch_all(MYSQLI_ASSOC);
   }
 
-} else if($rol==2){
+} else if($rol==1){
 
   $sentencia=$con->prepare("SELECT * FROM `paciente`");
   $sentencia->execute();
@@ -137,7 +137,7 @@ if(isset($_SESSION['correo'])) {
 
   
     
-    <?php if($rol=='1'){?>
+    <?php if($rol==2){?>
     <div class="form-group">
       <label for="hora" class="col-sm-4 control-label">Doctor: </label>
       <div class="col-sm-10">
@@ -154,7 +154,7 @@ if(isset($_SESSION['correo'])) {
     </div>
     </div>
 
-    <?php } else if($rol==2){?>
+    <?php } else if($rol==1){?>
 
       <div class="form-group">
       <label for="hora" class="col-sm-4 control-label">Doctor: </label>

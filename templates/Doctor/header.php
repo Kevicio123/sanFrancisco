@@ -17,10 +17,11 @@ $url_base="http://localhost/proySanFranciscoPHP/";
 <html lang="en">
 
 <head>
+
   <title>Title</title>
   <!-- Required meta tags -->
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Bootstrap CSS v5.2.1 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
@@ -76,8 +77,8 @@ $url_base="http://localhost/proySanFranciscoPHP/";
       <div class="btn-group btn-group-toggle" data-toggle="buttons">
        
         <a class="btn btn-light" href="<?php echo $url_base?>index2.php" role="button">Inicio</a>
-        <a class="btn btn-light" href="<?php echo $url_base?>" role="button">Ajustes</a>
-        <a class="btn btn-light" href="<?php echo $url_base?>indexPrincipal.php" role="button">Información de Cuenta</a>
+        <a class="btn btn-light" href="<?php echo $url_base?>doctor/manual.php" role="button">Manual de Usuario</a>
+        <a class="btn btn-light" href="<?php echo $url_base?>doctor/informacion.php" role="button">Información de Cuenta</a>
         </div>
         
         <div>

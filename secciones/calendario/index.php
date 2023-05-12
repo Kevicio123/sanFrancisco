@@ -42,7 +42,9 @@ include('./config.php');
 
   if($rol==1){
   $SqlEventos2   = ("SELECT * FROM eventoscalendar");
-  $resulEventos2 = mysqli_query($con, $SqlEventos2);
+  $resulEventos = mysqli_query($con, $SqlEventos2);
+  
+
   }else if($rol==2){
 
   if(isset($_SESSION['correo'])) {
