@@ -50,7 +50,7 @@ foreach($pacientes2 as $paciente ){
         <div class="col-md-6">
             <br>
             <br><br>
-            <a href="<?php echo $url_base?>secciones/reportes/doctores.php">
+            <a href="<?php echo $url_base?>secciones/reportes/doctores.php" target="_blank" >
             <div class="card" style="width: 16rem;">
             <img class="card-img-top" src="../../images/administrador/doctores.jpg" alt="Card image cap">
             <div class="card-body">

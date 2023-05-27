@@ -78,9 +78,10 @@ $url_base="http://localhost/proySanFranciscoPHP/";
       <div class="d-flex align-items-center">
 
       <div class="btn-group btn-group-toggle" data-toggle="buttons">
-       
-        <a class="btn btn-light" href="<?php echo $url_base?>index3.php" role="button">Inicio</a>
-        <a class="btn btn-light" href="<?php echo $url_base?>" role="button">Ajustes</a>
+
+        <a class="btn btn-light" href="<?php echo $url_base?>paciente/paginaPaciente.php" role="button">Inicio</a>
+        <a class="btn btn-light" href="<?php echo $url_base?>index3.php" role="button">Secciones</a>
+        <a class="btn btn-light" href="<?php echo $url_base?>paciente/manual.php" role="button">Manual de Plataforma</a>
         <a class="btn btn-light" href="<?php echo $url_base?>paciente/show.php" role="button">Información de Cuenta</a>
         </div>
         

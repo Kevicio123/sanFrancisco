@@ -114,7 +114,7 @@ $lista_pacientes=$sentencia->fetchAll(PDO::FETCH_ASSOC);
                 
             </table>
             <a name="" id="" class="btn btn-dark" 
-            href="create.php" role="button">Enviar Reunión Médica</a>
+            href="../calendario/index.php" role="button">Regresa a Calendario Médico</a>
         </div>
         
 

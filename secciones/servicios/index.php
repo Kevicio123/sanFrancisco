@@ -33,26 +33,24 @@ $cont=1;
         <div class="card-body">
         
         <div class="table-responsive-sm">
-            <table class="table table-striped table-hover" id="">
+            <table class="table table-striped table-hover" id="tabla">
                 <thead>
-                    <tr align="center">
-                        <th scope="col">#</th>
+                    <tr>
+                        <th align="center">Registro</th>
                         <th scope="col">Servicio Médico</th>
                         <th scope="col">Detalle</th>
                         <th scope="col">Acciones</th>
                         
                     </tr>
                 </thead>
-                <tbody>
                 
-                </tbody>
-                <tfoot align="center">
+                <tbody>
                 <?php foreach($lista_servicios as $servicio)
                     
                     { ?>
                     
                     <tr class="">
-                        <td scope="row"><?php echo $cont++; ?></td>
+                        <td align="center"><?php echo $cont++; ?></td>
                         <td><?php echo $servicio['nomSer']; ?></td>
                         <td><?php echo $servicio['detalle']; ?></td>
                         
@@ -65,12 +63,12 @@ $cont=1;
                         <a name="" id="" class="btn btn-danger" 
                          href="javascript:borrar(<?php echo $servicio['idTipSer']; ?>);"
                           role="button">Eliminar</a>
-                        
-                         <?php }  ?>
+ 
                     </td>
                     </tr>
-                </tfoot>
-                
+                    <?php }  ?>
+
+                </tbody>       
             </table>
             <a name="" id="" class="btn btn-dark" 
             href="create.php" role="button">Agregar Servicio</a>

@@ -38,6 +38,13 @@
     </div>
 
     <div class="form-group">
+      <label for="horainicio" class="col-sm-4 control-label">Modalidad</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" name="modalidad" id="modalidad" placeholder="Modalidad" readonly>
+      </div>
+    </div>
+
+    <div class="form-group">
       <label for="estado" class="col-sm-4 control-label">Estado</label>
       <div class="col-sm-10">
       <select id="estado" name="estado" class="form-select">
@@ -50,24 +57,14 @@
 
     <div class="col-md-12 activado">
  
-      <input type="radio" name="color_evento" id="orangeUpd" value="#FF5722" checked>
-      <label for="orangeUpd" class="circu" style="background-color: #FF5722;"> </label>
-
       <input type="radio" name="color_evento" id="amberUpd" value="#FFC107">  
       <label for="amberUpd" class="circu" style="background-color: #FFC107;"> </label>
-
-      <input type="radio" name="color_evento" id="limeUpd" value="#8BC34A">  
-      <label for="limeUpd" class="circu" style="background-color: #8BC34A;"> </label>
 
       <input type="radio" name="color_evento" id="tealUpd" value="#009688">  
       <label for="tealUpd" class="circu" style="background-color: #009688;"> </label>
 
-      <input type="radio" name="color_evento" id="blueUpd" value="#2196F3">  
-      <label for="blueUpd" class="circu" style="background-color: #2196F3;"> </label>
-
-      <input type="radio" name="color_evento" id="indigoUpd" value="#9c27b0">  
-      <label for="indigoUpd" class="circu" style="background-color: #9c27b0;"> </label>
-
+      <input type="radio" name="color_evento" id="indigo" value="#DF4268">  
+  <label for="indigo" class="circu" style="background-color: #DF4268;"> </label>
     </div>
 
     

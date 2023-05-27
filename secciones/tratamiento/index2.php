@@ -78,10 +78,7 @@ if(isset($_GET['txtID'])){
                         
                     </tr>
                 </thead>
-                <tbody>
-                
-                </tbody>
-                <tfoot align="center">
+                <tbody >
                 <?php foreach($lista_tratamientos as $tratamiento)
                     
                     { ?>
@@ -101,11 +98,6 @@ if(isset($_GET['txtID'])){
 
                         </td>
 
-                           
-
-
-
-                        
                         <td><?php echo $tratamiento['fechIni']; ?></td>
                         
                         <td colspan="3">
@@ -122,9 +114,8 @@ if(isset($_GET['txtID'])){
                          
                     </td>
                     </tr>
-                </tfoot>
-                <?php }  ?>
-                
+                    <?php }  ?>
+                </tbody>
             </table>
             <a name="" id="" class="btn btn-dark" 
             href="create.php" role="button">Crear Tratamiento</a>

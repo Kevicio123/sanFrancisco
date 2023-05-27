@@ -101,7 +101,52 @@ include('./config.php');
 ?>
 
 
+<div>
+  <br><br>
+  
+  <div class="row">  
 
+  <div class="col-md-8">
+
+  <h3>Leyenda de Colores</h3>
+  <br>
+
+  </div>
+
+  <div class="col-md-4" align="center">
+
+    <a href="../atenciones/index.php" type="button" class="btn btn-primary">Ver Lista de Atenciones</a>
+
+  </div>
+    <br>
+
+
+  <div class="col-md-1">
+  <input type="radio" name="color_evento" id="amber" value="#FFC107">  
+  <label for="amber" class="circu" style="background-color: #FFC107;"></label>  
+
+  <input type="radio" name="color_evento" id="teal" value="#009688">  
+  <label for="teal" class="circu" style="background-color: #009688;"> </label>  <br>
+
+  <input type="radio" name="color_evento" id="indigo" value="#DF4268">  
+  <label for="indigo" class="circu" style="background-color: #DF4268;"> </label>
+
+  </div>
+
+  <div class="col-md-4" align="left">
+  <label for="">Cita Virtual</label> <br> <br>
+
+  <label for="">Cita Presencial</label> <br> <br>
+
+  <label for="">Cita Cancelada</label>
+  </div>
+    
+
+  </div> 
+
+
+
+</div>
 <script src ="js/jquery-3.0.0.min.js"> </script>
 <script src="js/popper.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
@@ -217,6 +262,7 @@ eventClick:function(event){
     $('input[name=fecha_inicio]').val(event.start.format('DD-MM-YYYY'));
     $('input[name=horainicio]').val(event.horainicio);
     $('input[name=fecha_fin]').val(event.end.format("DD-MM-YYYY"));
+    $('input[name=modalidad]').val(event.modalidad);
     $('select[name=estado').val(event.estado);
     $("#modalUpdateEvento").modal();
   },

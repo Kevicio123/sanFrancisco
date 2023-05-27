@@ -179,23 +179,14 @@ if(isset($_SESSION['correo'])) {
 
   <div class="col-md-12" id="grupoRadio">
   
-  <input type="radio" name="color_evento" id="orange" value="#FF5722" checked>
-  <label for="orange" class="circu" style="background-color: #FF5722;"> </label>
-
   <input type="radio" name="color_evento" id="amber" value="#FFC107">  
   <label for="amber" class="circu" style="background-color: #FFC107;"> </label>
-
-  <input type="radio" name="color_evento" id="lime" value="#8BC34A">  
-  <label for="lime" class="circu" style="background-color: #8BC34A;"> </label>
 
   <input type="radio" name="color_evento" id="teal" value="#009688">  
   <label for="teal" class="circu" style="background-color: #009688;"> </label>
 
-  <input type="radio" name="color_evento" id="blue" value="#2196F3">  
-  <label for="blue" class="circu" style="background-color: #2196F3;"> </label>
-
-  <input type="radio" name="color_evento" id="indigo" value="#9c27b0">  
-  <label for="indigo" class="circu" style="background-color: #9c27b0;"> </label>
+  <input type="radio" name="color_evento" id="indigo" value="#DF4268">  
+  <label for="indigo" class="circu" style="background-color: #DF4268;"> </label>
 
 </div>
 		

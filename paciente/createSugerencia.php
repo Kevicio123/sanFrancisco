@@ -30,9 +30,26 @@ $url_index="http://localhost/proySanFranciscoPHP/";
 
 <br>
     <br>
+
+    <div class="row">
+     
+    <div class="col-md-6">
+    <h3>Ayudanos a Mejorar!</h3>
+
+   
+    <div>
+        <br>
+    <img src="../images/sugerencias2.jpg" style="width: 520px; height: 350px;">
+    <br><br>
+    </div>
+
+    </div>
+
+    <div class="col-md-6">
+        <br><br><br>
     <form action="" method="post" class="row g-3" enctype="multipart/form-data">
 
-    <h3>Envío de Sugerencias</h3>
+    
 
     <div class="alert alert-dismissible alert-success">
     <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
@@ -58,6 +75,9 @@ $url_index="http://localhost/proySanFranciscoPHP/";
     </div>
     </form>
 
+    </div>
+
+    </div>
 
 
 

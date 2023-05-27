@@ -24,7 +24,7 @@ FROM `doctor`");
 $sentencia->execute();
 $lista_doctores=$sentencia->fetchAll(PDO::FETCH_ASSOC);
 
-
+$n=1;
 
 ?>
 
@@ -46,6 +46,7 @@ $lista_doctores=$sentencia->fetchAll(PDO::FETCH_ASSOC);
             <table class="table table-striped table-hover" id="tabla">
                 <thead>
                     <tr >
+                        <th scope="col">Registro</th>
                         <th scope="col">DNI</th>
                         <th scope="col">Nombre Completo</th>
                         <th scope="col">Especialidad</th>
@@ -55,16 +56,17 @@ $lista_doctores=$sentencia->fetchAll(PDO::FETCH_ASSOC);
                         
                     </tr>
                 </thead>
-                <tfoot>
+                <tbody>
                 <?php foreach($lista_doctores as $doctor) 
                 
                 { ?>
                     <tr class="">
+                        <td align="center"><?php echo $n++;?></td>
                         <td scope="row"><?php echo $doctor['dni']; ?></td>
                         <td><?php echo $doctor['nombres']." ".$doctor['apePat']." ".$doctor['apaeMat']; ?></td>
                         <td><?php echo $doctor['especialidad']; ?></td>
-                        <td><?php echo $doctor['celular']; ?></td>
-                        <td><?php echo $doctor['usuario']; ?></td>
+                        <td><?php echo $doctor['celular'];?></td>
+                        <td><?php echo $doctor['usuario'];?></td>
                         <td colspan="3">
                         <a name="" id="" class="btn btn-secondary" 
                          href="edit.php?txtID=<?php echo $doctor['idDoctor']; ?>" 
@@ -74,9 +76,10 @@ $lista_doctores=$sentencia->fetchAll(PDO::FETCH_ASSOC);
                         href="javascript:borrar(<?php echo $doctor['idDoctor']; ?>)"
                          role="button">Eliminar</a> 
                         </td>
-                    </tr>             
-                </tfoot>
-                <?php } ?>
+                    </tr> 
+                    <?php } ?>            
+                </tbody>
+                
             </table>
             
             <a name="" id="" class="btn btn-dark" 

@@ -78,11 +78,9 @@ if($varsession==null || $varsession==''){
       <div class="d-flex align-items-center">
 
       <div class="btn-group btn-group-toggle" data-toggle="buttons">
-        <a class="btn btn-light" href="<?php echo $url_base?>/index.php" role="button">Inicio</a>
-        <a class="btn btn-light" href="<?php echo $url_base?>" role="button">Ajustes</a>
-        <label class="btn btn-light">
-            <input type="radio" name="options" id="option3" autocomplete="off"> Página Inicial
-        </label>
+        <a class="btn btn-light" href="<?php echo $url_base?>/administrador/paginaAdministrador.php" role="button">Inicio</a>
+        <a class="btn btn-light" href="<?php echo $url_base?>/index.php" role="button">Página Principal</a>
+        <a class="btn btn-light" href="<?php echo $url_base?>/index.php" role="button">Manual de Usuario</a>
         </div>
         
         <div>

@@ -4,14 +4,18 @@
     <?php include("./db.php");?>
     <?php include("principal.php");?>
     <br>
-    <br>
+    
+
 
     <div class="col-md-12">
-        <div class="alert alert-light" role="alert">
-        <p><b>Bienvenido</b> paciente <?php echo $nombres?> </p>
+    <BR>
+    <h2 align="center">Secciones Odontológicas</h2>
+        <div class="alert alert-light" role="alert"> 
+        <p><b>Si tiene dudas</b> sobre el uso de la plataforma, seleccione<a href="./paciente/manual.php" target="_blank"> Aquí.</a></p>
+        
     </div>
     <hr>
-       
+   
     <div class="row align-items-md-stretch" align="center">
         <div class="col-md-4">
             <div class="card" style="width: 16rem;">

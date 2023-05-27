@@ -13,11 +13,11 @@ $validacion=mysqli_query($conexion,$consulta);
 $tuplas=mysqli_fetch_array($validacion);
 if(isset($tuplas)){
 if($tuplas['idRoles']==1){
-    header ("Location:index.php");
+    header ("Location:administrador/paginaAdministrador.php");
 }else if($tuplas['idRoles']==2){
-    header ("Location:index2.php");
+    header ("Location:doctor/paginaDoctor.php");
 }else if($tuplas['idRoles']==3){
-    header ("Location:index3.php");
+    header ("Location:paciente/paginaPaciente.php");
 }
 }
 else{

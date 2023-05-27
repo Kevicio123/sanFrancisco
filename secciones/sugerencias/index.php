@@ -21,7 +21,7 @@ FROM `sugerencias`");
 $sentencia->execute();
 $sugerencias=$sentencia->fetchAll(PDO::FETCH_ASSOC);
 
-
+$n=0;
 
 
 
@@ -40,8 +40,9 @@ $sugerencias=$sentencia->fetchAll(PDO::FETCH_ASSOC);
             <table class="table table-striped table-hover" id="tabla">
                 <thead>
                     <tr align="center">
+                        <th scope="col">Registro</th>
                         <th scope="col">Asunto</th>
-                        <th scope="col">Detalle</th>
+                        <th scope="col">Detalle de Sugerencia</th>
                         <th scope="col">Acción</th>
                         
                     </tr>
@@ -52,7 +53,7 @@ $sugerencias=$sentencia->fetchAll(PDO::FETCH_ASSOC);
                 {?>
                 
                     <tr>
-
+                        <td align="center"><?php  echo $n++;?> </td>
                         <td><?php echo $sugerencia['asunto']; ?></td>
                         <td><?php echo $sugerencia['detalle']; ?></td>
                         

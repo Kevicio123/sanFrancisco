@@ -131,7 +131,7 @@ if(isset($_GET['txtID'])){
                         <td>
                         <a name="" id="" class="btn btn-info"
                          href="imagenes.php?txtID=<?php echo $paciente['idPaciente']; ?>" role="button">
-                         Ver Imágenes </a>
+                         Ver Repositorio </a>
                             |
                          <a name="" id="" class="btn btn-primary" 
                         href="create.php?txtID=<?php echo $paciente['idPaciente']; ?>" role="button">Subir Documentos</a>

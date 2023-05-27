@@ -55,7 +55,7 @@ $pacientes=$paciente->fetchAll(PDO::FETCH_ASSOC);
 foreach($pacientes as $paciente ){
     $rol=$paciente['idRoles'];
 }
-
+$n=1;
 ?>
 
 <?php
@@ -85,6 +85,7 @@ foreach($pacientes as $paciente ){
             <table class="table table-striped table-hover" id="tabla">
                 <thead>
                     <tr>
+                        <th scope="col">Registro</th>
                         <th scope="col">DNI</th>
                         <th scope="col">Nombre Completo</th>
                         <th scope="col">Sexo</th>
@@ -95,37 +96,36 @@ foreach($pacientes as $paciente ){
                         
                     </tr>
                 </thead>
-                <tfoot >
+                <tbody>
                 <?php foreach($lista_pacientes as $paciente) 
                 
                 { ?>
                     <tr class="">
-                        <td scope="row"><?php echo $paciente['dni']; ?></td>
-                        <td><?php echo $paciente['nombres']." ".$paciente['apePat']." ".$paciente['apaeMat']; ?></td>
-                        <td><?php echo $paciente['sexo']; ?></td>
-                        <td><?php echo $paciente['distrito']; ?></td>
-                        <td><?php echo $paciente['celular']; ?></td>
-                        <td><?php echo $paciente['usuario']; ?></td>
+                        <td align="center"><?php echo $n++;?></td>
+                        <td scope="row"><?php echo $paciente['dni'];?></td>
+                        <td><?php echo $paciente['nombres']." ".$paciente['apePat']." ".$paciente['apaeMat'];?></td>
+                        <td><?php echo $paciente['sexo'];?></td>
+                        <td><?php echo $paciente['distrito'];?></td>
+                        <td><?php echo $paciente['celular'];?></td>
+                        <td><?php echo $paciente['usuario'];?></td>
                         <td colspan="3">
                         <a name="" id="" class="btn btn-dark" target="_blank"
-                         href="carta_datos.php?txtID=<?php echo $paciente['idPaciente']; ?>" role="button">Detalle</a>
+                         href="carta_datos.php?txtID=<?php echo $paciente['idPaciente'];?>" role="button">Detalle</a>
                         |
                         <a name="" id="" class="btn btn-primary" 
-                        href="edit.php?txtID=<?php echo $paciente['idPaciente']; ?>"
+                        href="edit.php?txtID=<?php echo $paciente['idPaciente'];?>"
                         role="button">Editar</a>
                         |
                         <a name="" id="" class="btn btn-danger" 
-                         href="javascript:borrar(<?php echo $paciente['idPaciente']; ?>);"
+                         href="javascript:borrar(<?php echo $paciente['idPaciente'];?>);"
                          role="button">Eliminar</a>
                         
                         
                     </td>
                     </tr>
                    
-                </tfoot>
-                
-                <?php } ?>
-                
+                    <?php } ?>
+                </tbody>
             </table>
 
             <a name="" id="" class="btn btn-primary" 

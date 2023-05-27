@@ -19,7 +19,7 @@ $sentencia=$conexion->prepare("SELECT * FROM `especialidad`");
 $sentencia->execute();
 $lista_especialidades=$sentencia->fetchAll(PDO::FETCH_ASSOC);
 
-
+$n=1;
 
 ?>
 
@@ -37,7 +37,7 @@ $lista_especialidades=$sentencia->fetchAll(PDO::FETCH_ASSOC);
             <table class="table table-striped table-hover" id="tabla">
                 <thead>
                     <tr align="center">
-                        <th scope="col">Id</th>
+                        <th scope="col" align="center">Registro</th>
                         <th scope="col">Especialidad</th>
                         <th scope="col">Detalle</th>
                         <th scope="col">Acciones</th>
@@ -45,16 +45,12 @@ $lista_especialidades=$sentencia->fetchAll(PDO::FETCH_ASSOC);
                     </tr>
                 </thead>
                 
-                <tfoot align="center">
+                <tbody>
                 <?php foreach($lista_especialidades as $especialidad) 
                 
                 {?>
-
-                
-
-
                     <tr class="">
-                        <td scope="row"><?php echo $especialidad['idEsp']; ?></td>
+                        <td align="center"><?php  echo $n++;?> </td>
                         <td><?php echo $especialidad['especialidad']; ?></td>
                         <td><?php echo $especialidad['detalle']; ?></td>
                         
@@ -71,9 +67,9 @@ $lista_especialidades=$sentencia->fetchAll(PDO::FETCH_ASSOC);
                         
                     </td>
                     </tr>
-                 
-                </tfoot>
-                <?php } ?>   
+                <?php } ?> 
+                </tbody>
+                  
                 
             </table>
             <a name="" id="" class="btn btn-dark" 

@@ -81,14 +81,32 @@ foreach($pacientes as $paciente ){
 
     <br>
     <br>
+    <h3 align="center">Tratamientos Odontológicos</h3>
 
-    <h3>Tratamientos Odontológicos</h3>
-    <br>
 
-    <?php foreach($lista_tratamientos as $tratamiento)
+
+   
                     
-    { ?>
+    
     <div class="card">
+    
+
+    <div class="card-body">
+        
+        <div class="table-responsive-sm">
+            
+            <table class="table" id="tabla2">
+                <thead>
+                    <tr>
+                        <th scope="col"></th>
+
+                    </tr>
+                </thead>
+
+        <tbody>
+        <?php foreach($lista_tratamientos as $tratamiento){ ?>
+        <tr>
+        <td> 
         <h5 class="card-header"><?php echo $tratamiento['nomTrata']; ?>: Tratamiento de <?php echo $tratamiento['servicio'];?></h5>
         <div class="card-body">
         <p class="card-title"><b>Paciente:</b> <?php echo $tratamiento['nombrePaciente'].' '.$tratamiento['apePat'].' '.$tratamiento['apeMat']; ?></p>
@@ -107,28 +125,34 @@ foreach($pacientes as $paciente ){
         <a name="" id="" class="btn btn-secondary" 
         href="../secciones/tratamiento/edit.php?txtID=<?php echo $tratamiento['idTrat']; ?>" role="button">Editar</a>
         |
-        <a name="" id="" class="btn btn-primary" 
+        <a name="" id="" class="btn btn-info" 
         href="../secciones/tratamiento/detalle.php?txtID=<?php echo $tratamiento['idTrat']; ?>" role="button">Detalle</a>
         |
-        <a name="" id="" class="btn btn-info" 
+        <a name="" id="" class="btn btn-danger" 
         href="javascript:borrar3(<?php echo $tratamiento['idTrat']; ?>);" role="button">Eliminar</a>
         </div>
 
 
-    </div>
-    <br>
+        </div>
 
-    <?php }?>
+        </td>
+        </tr>
+    
+        <?php } ?>
 
-    <br><br><br>
+    </tbody>
+    </table>
+    
+        
+
     <div>
     <a name="" id="" class="btn btn-dark" 
     href="../secciones/tratamiento/create.php" role="button">Crear Tratamiento</a>
-    <a name="" id="" class="btn btn-success" 
+    <a name="" id="" class="btn btn-primary" 
     href="../secciones/tratamiento/index.php" role="button">Regresar</a>
     </div>
 
-    
+   
         
 
 

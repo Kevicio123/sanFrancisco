@@ -1,6 +1,6 @@
 
     </main>
-    <br><br><br><br><br><br><br><br>
+    <br><br><br><br><br>
   <footer>
 
   <div class="footer-dark">
@@ -36,17 +36,25 @@
 
   <script>
         var tabla= document.querySelector('#tabla');
-
         var dataTable = new DataTable(tabla,{
         perPage:3,
         perPageSelect:[3,6,9,12],
-        "language": {
-        "url":"./dataTableSpain.json"
+        language: {
+            "url":"../dataTableSpain.json"
         }
         });
+   </script>
 
-
-    </script>
+    <script>
+        var tabla2= document.querySelector('#tabla2');
+        var dataTable = new DataTable(tabla2,{
+        perPage:2,
+        perPageSelect:[2,4,6,8],
+        language: {
+            "url":"../dataTableSpain.json"
+        }
+        });
+   </script>
 
 <script>
     function borrar(id){

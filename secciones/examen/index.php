@@ -94,18 +94,26 @@ if(isset($_GET['txtID'])){
                         <td><?php echo $examen['tipExamen']; ?></td>
                         <td><?php echo $examen['trat']; ?></td>
                         <td><?php if (isset($examen['examen'])?$examen['examen']:""){ ?><b><p class="text-success">Enviado</p></b>
-                        <td><a href="<?php echo $examen['examen']?>" download="examenDescarga" 
-                        class="btn btn-primary">Descargar</a></td>
                         <?php
                         }else{ ?> 
                            <b><p class="text-danger">Pendiente</p></b>
-                          </td> 
-                        <td><button onclick="error();"
-                        class="btn btn-primary">Descargar</button></td>
-                        <?php } ?> 
+                          </td> <?php } ?> 
                         
+                        <?php if (isset($examen['examen'])?$examen['examen']:""){ ?> 
+                        <td><a href="<?php echo $examen['examen']?>" download="examenDescarga" 
+                        class="btn btn-primary">Descargar</a></td>
                         <td>
-                    
+                        <?php
+                        }else{ ?> 
+                        <td><button 
+                        class="btn btn-primary" type="button" disabled>Descargar</a></button>
+                        <td>
+                        <?php } ?> 
+
+
+
+
+                        
                         <a name="" id="" class="btn btn-secondary" 
                          href="edit.php?txtID=<?php echo $examen['idExamen']; ?>" role="button">Editar</a>
                         |

@@ -59,7 +59,7 @@ $url_base="http://localhost/proySanFranciscoPHP/";
     <div class="col-md-4">
       <div class="card" style="width: 20rem;">
         <div class="card-body">
-          <div class="p-3 mb-2 bg-success text-white"><h5 class="card-title">Atención Médica <?php if(true){echo $n=$n+1;};?></h5></div>
+          <div class="p-3 mb-2 bg-info text-white"><h5 class="card-title">Atención Médica <?php if(true){echo $n=$n+1;};?></h5></div>
           <div class="p-3 mb-2 bg-light text-dark">
                 <?php
                 setlocale(LC_TIME, 'es_ES.UTF-8', 'es_ES', 'es'); // establece la configuración regional en español
@@ -77,10 +77,11 @@ $url_base="http://localhost/proySanFranciscoPHP/";
             <p class="card-title"><b>Hora:</b> <?php echo $hora_am_pm;?></p>
             <p class="card-title"><b>Médico Tratante:</b> <?php echo $paciente['nombres']?></p>
             <p class="card-title"><b>Modalidad:</b> <?php echo $paciente['modalidad']?></p>
+            <p class="card-text"><b>Estado:</b> 
             <?php if ($paciente['estado'] == "Asistencia") { ?>
-              <p class="card-title"> <b>Estado: <p class="text-success"><?php echo $paciente['estado']; ?></p></b> </p>
+              <span class="text-success"><b><?php echo $paciente['estado']; ?></b></span>
             <?php } else { ?> 
-              <p class="card-title"> <b>Estado: <p class="text-danger"><?php echo $paciente['estado']; ?></p></b> </p>
+              <span class="text-danger"><b><?php echo $paciente['estado']; ?></b></span>
             <?php } ?>
           </div>
           <a href="detalle.php?txtID=<?php echo $paciente['id']; ?>" class="btn btn-dark">Detalle</a>
@@ -108,13 +109,14 @@ $url_base="http://localhost/proySanFranciscoPHP/";
             <p class="card-title"><b>Hora:</b> <?php echo $hora_am_pm;?></p>
             <p class="card-title"><b>Médico Tratante:</b> <?php echo $paciente['nombres']?></p>
             <p class="card-title"><b>Modalidad:</b> <?php echo $paciente['modalidad']?></p>
+            <p class="card-text"><b>Estado:</b> 
             <?php if ($paciente['estado'] == "Culminado") { ?>
-              <p class="card-title"> <b>Estado: <p class="text-success"><?php echo $paciente['estado']; ?></p></b> </p>
+              <span class="text-success"><b><?php echo $paciente['estado']; ?></b></span>
             <?php } else { ?> 
-              <p class="card-title"> <b>Estado: <p class="text-danger"><?php echo $paciente['estado']; ?></p></b> </p>
+              <span class="text-danger"><b><?php echo $paciente['estado']; ?></b></span>
             <?php } ?>
           </div>
-          <a href="detalle.php?txtID=<?php echo $paciente['id']; ?>" class="btn btn-dark">Detalle</a>
+          <a href="detalle.php?txtID=<?php echo $paciente['id']; ?>" class="btn btn-danger">Detalle</a>
         </div>
       </div>
       <br>
@@ -124,7 +126,7 @@ $url_base="http://localhost/proySanFranciscoPHP/";
   </div>
     
 
-    <a href="tratamiento.php" class="btn btn-success">Regresar</a>
+    <a href="tratamiento.php" class="btn btn-info">Regresar</a>
 
 
 

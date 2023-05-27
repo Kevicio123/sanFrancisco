@@ -46,10 +46,9 @@ $url_base="http://localhost/proySanFranciscoPHP/";
     <br>
     
     <h2 align="center">Sección de Tratamientos</h2>
+     <br>
 
-    <br>
-
-    <div class="alert alert-dismissible alert-success">
+    <div class="alert alert-dismissible alert-info">
     <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
     <strong>Sección de Tratamientos!</strong> En esta sección podrá visualizar
     las atenciones y exámenes médicos realizados a lo largo de su tratamiento.
@@ -62,13 +61,13 @@ $url_base="http://localhost/proySanFranciscoPHP/";
   
   <div class="card" >
   <div class="card-body">
-    <div class="p-3 mb-2 bg-info text-white"><h5 class="card-title">Tratamiento de <?php echo $paciente['dx'];?></h5></div>
+    <div class="p-3 mb-2 bg-dark text-white"><h5 class="card-title">Tratamiento de <?php echo $paciente['dx'];?></h5></div>
     <div class="p-3 mb-2 bg-light text-dark">
     <p class="card-title"><b>Paciente:</b> <?php echo $paciente['nombres'].' '.$paciente['apePat'].' '.$paciente['apaeMat']?></p>
     <p class="card-title"><b>Médico Tratante:</b> <?php echo $doc?></p>
     <p class="card-title"><b>Estado:</b> <?php echo $paciente['estadoTratamiento']?></p>
 
-    <a href="atenciones.php" class="btn btn-success">Atenciones</a>
+    <a href="atenciones.php" class="btn btn-info">Atenciones</a>
     <a href="examen.php" class="btn btn-dark">Exámenes</a>
     </div>
 
@@ -80,5 +79,9 @@ $url_base="http://localhost/proySanFranciscoPHP/";
 <br>
 <?php } ?>
 
-        
+    <div align="right">
+
+    <img src="../images/tratamiento2.png" style="width: 460px; height: 350px;">
+    </div>
+
     <?php include("../templates/Paciente/footer.php");?>

@@ -49,14 +49,20 @@
   $sentencia=$conexion->prepare("SELECT *
   FROM `tratamiento` t 
   INNER JOIN `paciente` p ON p.idPaciente = t.idPaciente
-  INNER JOIN `atencion` a ON a.idPaciente =p.idPaciente
+  INNER JOIN `eventoscalendar` e ON e.idPaciente =p.idPaciente
   WHERE t.idTrat =$txtID");
   $sentencia->execute();
   $lista_pacientes=$sentencia->fetchAll(PDO::FETCH_ASSOC);
 
 
-  $n=1;
+  $sentenciaHistoria = $conexion->prepare("SELECT * FROM `historiaclinica` WHERE idPaciente=:idPaciente");
+  $sentenciaHistoria->bindParam(":idPaciente", $idPaciente);
+  $sentenciaHistoria->execute();
+  $historiaClinica = $sentenciaHistoria->fetch(PDO::FETCH_ASSOC);
+  
 
+
+  $n=1;
 
 }
 
@@ -95,7 +101,7 @@ foreach($pacientes as $paciente ){
 
 <br><br><br>
 <div class="jumbotron">
-  <h3 class="display-4">Tratamiento: <?php echo $nomTrata;?></h3>
+  <h3 class="display-4">Detalle del Tratamiento: <?php echo $nomTrata;?></h3>
   <hr class="my-4"> 
   <p class="lead"><strong> Detalle del Tratamiento: </strong> <br><?php echo $Comentarios;?></p>
   <p class="lead"><strong> Estado: </strong> <br><?php echo $estadoTratamiento;?></p>
@@ -104,6 +110,16 @@ foreach($pacientes as $paciente ){
   <p class="lead"><strong> Tipo de Servicio: </strong> <br> <?php echo $servicio ?> </p>
   
   <br>
+
+  <h4 class="display-4">Historia Clínica del Paciente: </h4>
+  <br>
+  <a name="" id="" class="btn btn-secondary" target="_blank"
+  href="../historiaClínica/historia.php?txtID=<?php echo $historiaClinica['idPaciente']; ?>;"
+  role="button">Ver Historia Clínica</a>
+
+  <hr class="my-4"> 
+  
+
   <h4 class="display-4">Exámenes Médicos: </h4>
   <hr class="my-4"> 
   <?php foreach($registros as $registro) 
@@ -124,19 +140,20 @@ foreach($pacientes as $paciente ){
   <hr class="my-4"> 
   <?php } ?>
   
-  <br>
   <p class="lead">
-    <a class="btn btn-primary btn-lg" href="../examen/create.php" role="button">Asignar Exámenes</a>
+    <a class="btn btn-secondary btn-lg" href="../examen/create.php" role="button">Asignar Exámenes</a>
   </p>
   <br>
 
-  <h4 class="display-4">Atenciones Realizadas: </h4>
+  
+
+  <h4 class="display-4">Atenciones Odontológicas: </h4>
   <hr class="my-4"> 
   <?php foreach($lista_pacientes as $paciente) 
                 
   { ?>
-  <p class="lead"><b> Atención # <?php echo $n++;?></b></p>
-  <p class="lead"><strong> Fecha de la Atención: </strong> <br><?php echo $paciente['fechAten'];?></p>
+  <p class="lead"><strong><b> Atención # <?php echo $n++;?></b><strong></p>
+  <p class="lead"><strong> Fecha de la Atención: </strong> <br><?php echo $paciente['fecha_inicio'];?></p>
   <p class="lead"><strong> Link de la Atención: </strong> <br> <a target="blank" href="<?php echo $paciente['linkAten']; ?>"><?php echo $paciente['linkAten'];?></a></p>
   <p class="lead"><strong> Estado: </strong> <br><?php echo $paciente['estado'];?></p>
   <hr class="my-4"> 

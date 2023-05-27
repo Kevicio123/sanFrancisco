@@ -8,6 +8,7 @@
     
 
     <div class="col-md-12">
+        <h2 align="center">Secciones Odontológicas</h2><br>
         <div class="alert alert-light" role="alert">
         <p><b>Bienvenido</b> doctor(a) <?php echo $nombres?> </p>
     </div>

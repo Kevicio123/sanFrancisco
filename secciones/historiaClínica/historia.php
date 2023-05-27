@@ -43,8 +43,8 @@ if(isset($_GET['txtID'])){
     $fecha= date("Y-m-d");
 
     $sentencia2=$conexion->prepare("SELECT *
-    FROM `atencion` a 
-    INNER JOIN `paciente` p ON a.idPaciente =p.idPaciente
+    FROM `eventoscalendar` e 
+    INNER JOIN `paciente` p ON e.idPaciente =p.idPaciente
     WHERE p.idPaciente =$txtID");
     $sentencia2->execute();
     $lista_atenciones=$sentencia2->fetchAll(PDO::FETCH_ASSOC);
@@ -493,16 +493,16 @@ if(isset($_GET['txtID'])){
 
 <?php foreach($lista_atenciones as $atencion){ 
     
-    if($atencion['modalidad']=='Presencial'){?>
+    if($atencion['modalidad']=='Presencial' && $atencion['estado']=='Asistencia'){?>
     
 <tr class="table2" align="center">
     
     <td class="table2">
-    <label for="" class="form-label"> <?php echo $atencion['fechAten']?> </label><br><br>
+    <label for="" class="form-label"> <?php echo $atencion['fecha_inicio']?> </label><br><br>
     </td>
 
     <td class="table2">
-    <label for="" class="form-label"><?php echo $atencion['Comentarios']?></label><br><br>
+    <label for="" class="form-label"><?php echo $atencion['evento']?></label><br><br>
     </td>
 
     <td class="table2">

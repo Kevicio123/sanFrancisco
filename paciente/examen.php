@@ -35,7 +35,7 @@ include("../db.php");
         $examen=$examen['tipExamen'];
      }
 
-     $n=-1;
+     $n=0;
      
 
 
@@ -43,86 +43,51 @@ include("../db.php");
 
 
 <?php include("../templates/Paciente/header.php");?>
-    <br>
-    
-    <h2 align="center">Lista de Examenes</h2>
+   
 
     
 
+<br>
+<div class="card">
     <br>
-    <div class="card">
-        
-        <div class="card-body">
-        
+    <h2 align="center">Envio de Exámenes</h2>
+    <div class="card-body">
         <div class="table-responsive-sm">
-            <table class="table" id="tabla">
+            <table class="table" id="tabla2">
                 <thead class="thead-dark">
                     <tr>
                         <th scope="col">N° Ordenar</th>
-                        
-                        
-                        
                     </tr>
                 </thead>
-                <tfoot >
-                <?php foreach($lista_pacientes as $paciente) 
-                
-                { ?>
-                    <tr class="">
-                        <td>
-                    
-                        <div class="card">
-                        <div class="card-header">
-                           
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title"> <?php $n=$n+1; echo $n.'. ';?>Examen de <?php echo $paciente['tipExamen'] ?></h5>
-                            <p class="card-text"><?php echo $paciente['Comentarios']; ?></p>
-                            <?php if (isset($paciente['examen'])?$paciente['examen']:""){ ?> <b> <p class="text-success">Enviado</p></b>
-                            <?php
-                            }else{ ?> 
-                            <b><p class="text-danger">Pendiente</p></b>
-                            <?php } ?> 
-                            <a name="" id="" class="btn btn-primary" 
-                            href="edit.php?txtID=<?php echo $paciente['idExamen']; ?>" role="button">Enviar Examen</a>
-                            
-                        </div>
-                        </div>
-                        <br>
-                        </td>
-                    
-                    </tr>
-                    
-                  
-                </tfoot>
-                
-                <?php }?>
-                
+                <tbody> <!-- Cambio: Filas de la tabla deben ir dentro de <tbody> -->
+                    <?php foreach($lista_pacientes as $paciente) { ?>
+                        <tr>
+                            <td>
+                                <div class="card">
+                                    <div class="card-header"></div>
+                                    <div class="card-body">
+                                        <h5 class="card-title"><?php $n=$n+1; echo $n.'. ';?>Examen de <?php echo $paciente['tipExamen'] ?></h5>
+                                        <p class="card-text"><?php echo $paciente['Comentarios']; ?></p>
+                                        <p class="card-text"><b>Estado:</b> 
+                                            <?php if (isset($paciente['examen'])?$paciente['examen']:"") { ?>
+                                                <span class="text-success">Enviado</span>
+                                            <?php } else { ?>
+                                                <span class="text-danger">Pendiente</span>
+                                            <?php } ?>
+                                        </p>
+                                        <a name="" id="" class="btn btn-info" href="edit.php?txtID=<?php echo $paciente['idExamen']; ?>" role="button">Enviar Examen</a>
+                                    </div>
+                                </div>
+                                <br>
+                            </td>
+                        </tr>
+                    <?php } ?>
+                </tbody>
             </table>
-            <a href="tratamiento.php" class="btn btn-success">Regresar</a>
-
-           
-            
+            <a href="tratamiento.php" class="btn btn-dark">Regresar</a>
         </div>
-         
-
-
-        </div>
-
-        
     </div>
-
- 
-
-    <br>
-
-
-  
-
-
-
-
-
-    <?php include("../templates/footer.php");?>
-
+</div>
+<br>
+<?php include("../templates/footer.php"); ?>
     

@@ -27,7 +27,7 @@ FROM `users`");
 $sentencia->execute();
 $lista_usuarios=$sentencia->fetchAll(PDO::FETCH_ASSOC);
 
-
+$n=1;
 
 
 
@@ -46,6 +46,7 @@ $lista_usuarios=$sentencia->fetchAll(PDO::FETCH_ASSOC);
             <table class="table table-striped table-hover" id="tabla">
                 <thead>
                     <tr align="center">
+                        <th scope="col">Registro</th>
                         <th scope="col">Correo</th>
                         <th scope="col">Contraseña</th>
                         <th scope="col">Persona</th>
@@ -54,13 +55,14 @@ $lista_usuarios=$sentencia->fetchAll(PDO::FETCH_ASSOC);
                         
                     </tr>
                 </thead>
-                <tfoot align="center">
+
+                <tbody>
                 <?php foreach($lista_usuarios as $usuario) 
                 
                 {?>
                 
                     <tr>
-
+                        <td align="center"><?php echo $n++;?></td>
                         <td><?php echo $usuario['correo']; ?></td>
                         <td> ***** </td>
                         <td> <?php if (isset($usuario['paciente'])?$usuario['paciente']:""){ echo $usuario['paciente'];} 
@@ -82,10 +84,11 @@ $lista_usuarios=$sentencia->fetchAll(PDO::FETCH_ASSOC);
                         
                     </td>
                     </tr>
-                </tfoot>
+                    <?php }
+                    ?>
+                </tbody>
 
-                <?php    
-                }?>
+                
                 
             </table>
             <a name="" id="" class="btn btn-dark" 
