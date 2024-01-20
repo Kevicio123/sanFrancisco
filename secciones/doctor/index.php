@@ -90,6 +90,9 @@ $n=1;
 
         </div>
 
+        <a name="" id="" class="btn btn-primary" 
+            href="../../index.php" role="button">Regresar al Menú</a>
+
         
     </div>
 

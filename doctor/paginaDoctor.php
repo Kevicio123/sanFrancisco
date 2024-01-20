@@ -10,7 +10,7 @@
 
     <div class="col-md-6">
         <br><br><br><br><br><br><br>
-        <h1>Bienvenida Odontóloga </h1> 
+        <h1>Bienvenida Odontólogo </h1> 
         <h3><?php echo $nombres?></h3>  
         <br>
         <a class="btn btn-dark" type="button" href="../index2.php">Empieza a Navegar</a>

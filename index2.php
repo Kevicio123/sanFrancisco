@@ -1,4 +1,3 @@
-
 <?php include("templates/Doctor/header.php");?>
     <?php include("./db.php");?>
     <?php include("principal2.php");?>
@@ -10,9 +9,8 @@
     <div class="col-md-12">
         <h2 align="center">Secciones Odontológicas</h2><br>
         <div class="alert alert-light" role="alert">
-        <p><b>Bienvenido</b> doctor(a) <?php echo $nombres?> </p>
+        <p><b>Si tiene dudas</b> sobre el uso de la plataforma, seleccione<a href="./doctor/manual.php"> Aquí.</a></p>
     </div>
-    <hr>
 
 <div class="row align-items-md-stretch" align="center">
 
@@ -72,8 +70,20 @@
             </div>
             </div>  
         </div>
+        
 
-        <div class="col-md-4">
+        <div class="col-md-4" align="center">
+            <div class="card" style="width: 16rem;">
+            <a href="<?php echo $url_base?>secciones/alertas/">
+            <img class="card-img-top" src="./images/ALERTA.jpg" alt="Card image cap">
+            <div class="card-body"><br>
+            <h4 class="card-text" align="center">Alertas Médicas</h4>
+            </a>
+            </div>
+            </div>  
+        </div>
+
+        <div class="col-md-6" align="center"><br><br>
             <div class="card" style="width: 16rem;">
             <a href="<?php echo $url_base?>secciones/reportes/">
             <img class="card-img-top" src="./images/administrador/reportes.jpg" alt="Card image cap">
@@ -86,11 +96,13 @@
         <br> 
         </div>
 
-        <div class="col-md-12" align="center">
+        <div class="col-md-6" align="center"><br><br>
             <div class="card" style="width: 16rem;">
+            <a href="<?php echo $url_base?>chatbot.php">
             <img class="card-img-top" src="./images/administrador/chatbot.jpg" alt="Card image cap">
             <div class="card-body">
             <h4 class="card-text" align="center">Chatbot</h4>
+            </a>
             </div>
             </div>      
         

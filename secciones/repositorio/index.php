@@ -157,7 +157,14 @@ if(isset($_GET['txtID'])){
 
 
         </div>
-
+        <?php 
+        if($rol==1){ ?>
+        <a name="" id="" class="btn btn-secondary" 
+            href="../../index.php" role="button">Regresar al Menú</a>
+        <?php }else if($rol==2){ ?>
+            <a name="" id="" class="btn btn-secondary" 
+            href="../../index2.php" role="button">Regresar al Menú</a>
+        <?php }?>
         
     </div>
 

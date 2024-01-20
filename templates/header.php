@@ -1,13 +1,14 @@
 <?php
 @session_start();
 
-$url_base="http://localhost/proySanFranciscoPHP/";
-$varsession= $_SESSION['correo'];
-if($varsession==null || $varsession==''){
+$url_base="http://localhost/proySanFranciscoPHP";
 
-    header("Location: login.php");
-    die();}
-
+    
+    if (!isset($_SESSION['correo'])) {
+        header("Location: $url_base/login.php");
+        exit();
+    }
+   
 
 
  //seguridad de sesiones
@@ -32,7 +33,7 @@ if($varsession==null || $varsession==''){
 <link href="https://unpkg.com/vanilla-datatables@latest/dist/vanilla-dataTables.min.css" rel="stylesheet" type="text/css">
 <script src="https://unpkg.com/vanilla-datatables@latest/dist/vanilla-dataTables.min.js" type="text/javascript"></script>
 
-<script src="http://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
 

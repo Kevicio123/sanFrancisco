@@ -95,6 +95,10 @@ $n=1;
             href="create.php" role="button">Agregar Usuario</a>
         </div>
         </div>
+         
+        <a name="" id="" class="btn btn-primary" 
+            href="../../index.php" role="button">Regresar al Menú</a>
+        
         </div>
         
         

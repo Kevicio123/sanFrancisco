@@ -142,9 +142,11 @@
 
         <div class="col-md-3">
             <div class="card" style="width: 16rem;">
+            <a href="<?php echo $url_base?>chatbot.php">
             <img class="card-img-top" src="./images/administrador/chatbot.jpg" alt="Card image cap">
             <div class="card-body">
             <h4 class="card-text" align="center">Chatbot</h4>
+            </a>
             </div>
             </div>      
             <br>
@@ -152,12 +154,23 @@
             <br>   
         </div>
 
-        <div class="col-md-12" align="center">
+        <div class="col-md-6" align="center">
             <div class="card" style="width: 16rem;">
             <a href="<?php echo $url_base?>secciones/repositorio/">
             <img class="card-img-top" src="./images/repositorio.png" alt="Card image cap">
             <div class="card-body">
             <h4 class="card-text" align="center">Repositorio de Imágenes</h4>
+            </a>
+            </div>
+            </div>  
+        </div>
+
+        <div class="col-md-6" align="center">
+            <div class="card" style="width: 16rem;">
+            <a href="<?php echo $url_base?>secciones/alertas/">
+            <img class="card-img-top" src="./images/ALERTA.jpg" alt="Card image cap">
+            <div class="card-body"><br>
+            <h4 class="card-text" align="center">Alertas Médicas</h4>
             </a>
             </div>
             </div>  

@@ -7,20 +7,6 @@ include ("../../db.php");
 if(isset($_GET['txtID'])){
     $txtID=(isset($_GET['txtID']))?$_GET['txtID']:"";
 
-    // Buscar el archivo relacionado con el paciente
-    $sentencia=$conexion->prepare("SELECT hisoriaClinic FROM `paciente`
-    WHERE idPaciente=:idPaciente");
-    $sentencia->bindParam(":idPaciente",$txtID);
-    $sentencia->execute();
-    $encontrar_pdf=$sentencia->fetch(PDO::FETCH_LAZY);
-
-    // Borrar el archivo
-    if(isset($encontrar_pdf["hisoriaClinic"]) && $encontrar_pdf["hisoriaClinic"]!='' ){
-        if(file_exists("./".$encontrar_pdf["hisoriaClinic"])){
-            unlink("./".$encontrar_pdf["hisoriaClinic"] );         
-        }
-    }
-
     $sentencia=$conexion->prepare("DELETE FROM `paciente` WHERE idPaciente=:idPaciente");
     $sentencia->bindParam(":idPaciente",$txtID);
     $sentencia->execute();
@@ -131,13 +117,12 @@ $n=1;
             <a name="" id="" class="btn btn-primary" 
             href="create.php" role="button">Agregar Paciente</a>
         </div>
-         
-
-
         </div>
-
         
     </div>
+
+    <a name="" id="" class="btn btn-secondary" 
+            href="../../index.php" role="button">Regresar al Menú</a>
 
     
 

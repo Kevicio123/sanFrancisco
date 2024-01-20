@@ -57,6 +57,52 @@ if(isset($_SESSION['correo'])) {
 
 
 ?>
+
+<?php
+if($_POST){
+  $numero=(isset($_POST["numero"])?$_POST["numero"]:"");
+  
+  //TOKEN QUE NOS DA FACEBOOK
+  $token = 'EAAQuIMuWzTYBAJQ0nH35YqcZAJJ4FZBB5T6rRi3Gq2fKFzWh9lbTn5qCBzi74ZAt5NGvNYX0HAa64iZBOZClZCGNFxcy1JTFIqJV1hyZAZCGqq0HZBuFSumFyYFlqxWqDMiKVjcopSkXwQxjlKO9W2axulzClch6Rdw4AtmeTHp0AKntBq2wklsabeVnD36SOlCZAt87ZBYYDIhSAZDZD';
+  //NUESTRO TELEFONO
+  $telefono ='51937643889';
+  //URL A DONDE SE MANDARA EL MENSAJE
+  $url = 'https://graph.facebook.com/v17.0/126733600325397/messages';
+  
+  //CONFIGURACION DEL MENSAJE
+  $mensaje = ''
+          . '{'
+          . '"messaging_product": "whatsapp", '
+          . '"to": "'.$telefono.'", '
+          . '"type": "template", '
+          . '"template": '
+          . '{'
+          . '     "name": "hello_world",'
+          . '     "language":{ "code": "en_US" } '
+          . '} '
+          . '}';
+  //DECLARAMOS LAS CABECERAS
+  $header = array("Authorization: Bearer " . $token, "Content-Type: application/json",);
+  //INICIAMOS EL CURL
+  
+  $curl = curl_init();
+  curl_setopt($curl, CURLOPT_URL, $url);
+  curl_setopt($curl, CURLOPT_POSTFIELDS, $mensaje);
+  curl_setopt($curl, CURLOPT_HTTPHEADER, $header);
+  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+  //OBTENEMOS LA RESPUESTA DEL ENVIO DE INFORMACION
+  $response = json_decode(curl_exec($curl), true);
+  //IMPRIMIMOS LA RESPUESTA 
+  print_r($response);
+  //OBTENEMOS EL CODIGO DE LA RESPUESTA
+  $status_code = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+  //CERRAMOS EL CURL
+  curl_close($curl);
+  
+  
+  }
+  ?>
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
 
@@ -71,7 +117,7 @@ if(isset($_SESSION['correo'])) {
         </button>
       </div>
       <br>
-  <form name="formEvento" id="formEvento" action="nuevoEvento.php" class="form-horizontal" method="POST">
+  <form name="formEvento" id="formEvento" action="nuevoEvento.php" class="form-horizontal" method="post" enctype="multipart/form-data">
 		<div class="form-group">
 			<label for="evento" class="col-sm-12 control-label">Nombre del Evento</label>
 			<div class="col-sm-10">
@@ -96,6 +142,11 @@ if(isset($_SESSION['correo'])) {
       <div class="col-sm-10">
         <input type="time" class="form-control" name="horainicio" id="horainicio" placeholder="Hora">
       </div>
+    </div>
+
+    <div class="visually-hidden-focusable" >
+    <label for="numero" class="form-label">Celular</label>
+    <input type="number" class="form-control" id="numero" name="numero">
     </div>
 
     

@@ -22,6 +22,10 @@
 </a>
 </div>
 
+<div>
+<br><br>
+    <a href="../index3.php" type="button" class="btn btn-secondary">Regresar Menú Principal</a>
+</div>
 
 
 

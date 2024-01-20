@@ -1,11 +1,13 @@
 <?php
 @session_start();
-error_reporting(0);
-$varsession=$_SESSION['correo'];
-if($varsession==null || $varsession==''){
+$url_base="http://localhost/proySanFranciscoPHP";
 
-    header("Location:../../login.php");
-    die();}
+    
+    if (!isset($_SESSION['correo'])) {
+        header("Location: $url_base/login.php");
+        exit();
+    }
+   
 
     
 $url_base="http://localhost/proySanFranciscoPHP/";    
@@ -80,8 +82,7 @@ $url_base="http://localhost/proySanFranciscoPHP/";
       <div class="btn-group btn-group-toggle" data-toggle="buttons">
 
         <a class="btn btn-light" href="<?php echo $url_base?>paciente/paginaPaciente.php" role="button">Inicio</a>
-        <a class="btn btn-light" href="<?php echo $url_base?>index3.php" role="button">Secciones</a>
-        <a class="btn btn-light" href="<?php echo $url_base?>paciente/manual.php" role="button">Manual de Plataforma</a>
+        <a class="btn btn-light" href="<?php echo $url_base?>index3.php" role="button">Página Principal</a>
         <a class="btn btn-light" href="<?php echo $url_base?>paciente/show.php" role="button">Información de Cuenta</a>
         </div>
         

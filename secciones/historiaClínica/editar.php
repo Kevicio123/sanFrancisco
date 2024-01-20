@@ -1,5 +1,12 @@
 <?php
+session_start();
 include ("../../db.php");
+$user_session=$_SESSION['correo'];
+$paciente = $conexion->prepare
+("SELECT * FROM users 
+WHERE correo = '$user_session'");
+$paciente->execute();
+$pacientes=$paciente->fetchAll(PDO::FETCH_ASSOC);
 
 if(isset($_GET['txtID'])){
     $txtID=(isset($_GET['txtID']))?$_GET['txtID']:"";
@@ -135,17 +142,6 @@ if($_POST){
 
 
 <?php
-
-include ("../../db.php");
-session_start();
-$user_session=$_SESSION['correo'];
-$paciente = $conexion->prepare
-("SELECT * FROM users 
-WHERE correo = '$user_session'");
-$paciente->execute();
-$pacientes=$paciente->fetchAll(PDO::FETCH_ASSOC);
-
-
 foreach($pacientes as $paciente ){
     $rol=$paciente['idRoles'];
 }

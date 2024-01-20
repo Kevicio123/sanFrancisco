@@ -23,3 +23,9 @@
 </a>
 </div>
 
+<br>
+<div>
+<br><br>
+    <a href="../index2.php" type="button" class="btn btn-secondary">Regresar Menú Principal</a>
+</div>
+

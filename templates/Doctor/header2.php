@@ -70,8 +70,8 @@ if($varsession==null || $varsession==''){
       <div class="d-flex align-items-center">
 
       
-        <a class="btn btn-light" href="<?php echo $url_base?>index2.php" role="button">Inicio</a>
-        <a class="btn btn-light" href="<?php echo $url_base?>index2.php">Ajustes</a>
+        <a class="btn btn-light" href="<?php echo $url_base?>doctor/paginaDoctor.php" role="button">Inicio</a>
+        <a class="btn btn-light" href="<?php echo $url_base?>index2.php">Pagina Principal</a>
         
         
         

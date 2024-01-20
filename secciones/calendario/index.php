@@ -20,7 +20,6 @@ foreach($pacientes as $paciente ){
     }
 ?>
 
-
 <!DOCTYPE html>
 <html>
 <head>

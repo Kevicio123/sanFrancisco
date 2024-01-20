@@ -78,7 +78,6 @@ $url_base="http://localhost/proySanFranciscoPHP/";
 
         <a class="btn btn-light" href="<?php echo $url_base?>doctor/paginaDoctor.php" role="button">Inicio</a>
         <a class="btn btn-light" href="<?php echo $url_base?>index2.php" role="button">Página Principal</a>
-        <a class="btn btn-light" href="<?php echo $url_base?>doctor/manual.php" role="button">Manual de Usuario</a>
         <a class="btn btn-light" href="<?php echo $url_base?>doctor/informacion.php" role="button">Información de Cuenta</a>
         </div>
         
