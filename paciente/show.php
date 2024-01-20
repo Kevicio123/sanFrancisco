@@ -27,7 +27,7 @@ $url_index="http://localhost/proySanFranciscoPHP/";
 <div class="card border-info mb-3" style="width: 28rem;">
   <div class="card-body text-info">
     <h5 class="card-title">Nombre Completo</h5>
-    <p class="card-text"><?php echo $nombres.' '.$apePat.' '.$apeMat?></p>
+    <p class="card-text"><?php echo $nombres?></p>
   </div>
   <div class="card-header">
     <p class="card-title"><b>DNI:</b>  <?php echo $dni?></p>
